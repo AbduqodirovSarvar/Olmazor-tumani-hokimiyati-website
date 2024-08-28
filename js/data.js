@@ -9,7 +9,6 @@ export async function fetchAllData() {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     Data = await response.json();
-    console.log(Data);
     return Data;
   } catch (error) {
     console.error('Error fetching data:', error);

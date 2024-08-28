@@ -4,6 +4,9 @@ import { renderAboutSection } from './about.js';
 import { renderProjectSection } from './project.js';
 import { renderTeamMembers } from './team.js';
 import { renderPostSection } from './post.js';
+import { renderInvestment } from './investment.js';
+import { renderNewsSection } from './news.js';
+import { renderFooterSection } from './footer.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -15,6 +18,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 			renderProjectSection(data);
 			renderTeamMembers(data);
 			renderPostSection(data);
+			renderInvestment(data);
+			renderNewsSection(data);
+			renderFooterSection(data);
 
 		}
 
@@ -29,8 +35,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 		   "use strict";
 	   
 		   
-		   $(".loader").delay(1000).fadeOut("slow");
-		 $("#overlayer").delay(1000).fadeOut("slow");	
+		   $(".loader").delay(100).fadeOut("slow");
+		 $("#overlayer").delay(100).fadeOut("slow");	
 		 
 	   
 		   var siteMenuClone = function() {
