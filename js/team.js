@@ -1,64 +1,94 @@
 import { baseFileUrl } from "./data.js";
+import { getCurrentLanguage } from "./translation.js";
 
-// console.log(Data);
-// let employees = Data.employees;
-// console.log(employees);
-  
-export function renderTeamMembers(Data) {
+export function renderTeamMembers(Data, categories) {
     let employees = Data.employees;
     const teamMembersContainer = document.getElementById("team-members");
-    // teamMembersContainer.innerHTML = ''; // Clear existing content
+    const currentLanguage = getCurrentLanguage();
 
-    // Assuming you have an array of categories to generate buttons dynamically
-    const categories = ["All", "category1", "category2", "category3", "category4", "category5"];
-
-    // Get the filters div
     const filtersDiv = document.getElementById("team-filters");
-
-    // Clear any existing buttons
-    // filtersDiv.innerHTML = "";
 
     // Create and append buttons
     categories.forEach((category, index) => {
-    const button = document.createElement("button");
-    button.className = "btn btn-primary";
-    if (index === 0) {
-        button.classList.add("active"); // Set the first button as active
-    }
-    button.setAttribute("data-filter", index === 0 ? "*" : `.${category.toLowerCase()}`);
-    button.textContent = category;
-    
-    // Append the button to the filters div
-    filtersDiv.appendChild(button);
+        const button = document.createElement("button");
+        button.className = "btn btn-primary";
+        if (index === 0) {
+            button.classList.add("active");
+        }
+        button.setAttribute("employee-data-filter", `.${category.id}`);
+        button.textContent = category["name" + currentLanguage];
+        button.addEventListener("click", () => filterTeamMembers(category.id));
+
+        filtersDiv.appendChild(button);
     });
 
-  
+    // Render the team members
     employees.forEach((employee, index) => {
+      let firstName;
+      let lastName;
+      switch(currentLanguage){
+        case "Ru":
+          firstName = employee.firstnameRu;
+          lastName = employee.lastnameRu;
+          break;
+        case "UzRu":
+          firstName = employee.firstnameRu;
+          lastName = employee.lastnameRu;
+          break;
+        default:
+          firstName = employee.firstnameEn;
+          lastName = employee.lastnameEn;
+          break;
+      }
       const memberHTML = `
-        <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
-          <div class="team-member ${employee.category.nameEn.toLowerCase()}">
-            <figure>
-              <ul class="social">
-                <li><a href="#"><span class="icon-facebook"></span></a></li>
-                <li><a href="#"><span class="icon-twitter"></span></a></li>
-                <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                <li><a href="#"><span class="icon-instagram"></span></a></li>
-                <li><a href="#"><span class="icon-telegram"></span></a></li>
-                <li><a href="mailto:${employee.email}"><span class="icon-mail_outline"></span></a></li>
-              </ul>
-              <img src="${baseFileUrl}/${employee.photo}" alt="${employee.firstnameEn} ${employee.lastnameEn}" class="img-fluid">
-            </figure>
-            <div class="p-3">
-              <h3>${employee.firstnameEn} ${employee.lastnameEn}</h3>
-              <span class="position">${employee.positionEn}</span>
+            <div class="col-md-6 col-lg-3 mb-4 category-${employee.category.id}" data-aos="fade-up" data-aos-delay="${index * 100}">
+              <div class="team-member ">
+                <figure>
+                  <ul class="social">
+                    <li><a href="#"><span class="icon-facebook"></span></a></li>
+                    <li><a href="#"><span class="icon-twitter"></span></a></li>
+                    <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                    <li><a href="#"><span class="icon-instagram"></span></a></li>
+                    <li><a href="#"><span class="icon-telegram"></span></a></li>
+                    <li><a href="mailto:${employee.email}"><span class="icon-mail_outline"></span></a></li>
+                  </ul>
+                  <img src="${baseFileUrl}/${employee.photo}" alt="${employee.firstnameEn} ${employee.lastnameEn}" class="img-fluid">
+                </figure>
+                <div class="p-3">
+                  <h3>${firstName} ${lastName}</h3>
+                  <span class="position">Position: ${employee["position"+ currentLanguage]}</span>
+                </div>
+                <div>
+                  <p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      `;
-  
-      teamMembersContainer.insertAdjacentHTML('beforeend', memberHTML);
+        `;
+
+        teamMembersContainer.insertAdjacentHTML('beforeend', memberHTML);
     });
 
+    // Initialize the filter to display members of the first category
+    filterTeamMembers(categories[0].id);
+}
 
-  }
-  
+// Filter function to display the selected category
+function filterTeamMembers(categoryId) {
+    document.querySelectorAll("#team-filters button").forEach(button => {
+        button.classList.remove("active");
+    });
+    document.querySelector(`[employee-data-filter='.${categoryId}']`).classList.add("active");
+
+    document.querySelectorAll("#team-members .col-md-6").forEach(member => {
+        member.style.display = "none";
+    });
+
+    const filteredMembers = document.querySelectorAll(`#team-members .category-${categoryId}`);
+
+    for (let index = 0; index < filteredMembers.length; index++) {
+        if (index === 6) {
+            break;
+        }
+        filteredMembers[index].style.display = "block";
+    }
+}

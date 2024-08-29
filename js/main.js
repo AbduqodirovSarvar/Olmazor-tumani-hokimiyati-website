@@ -1,4 +1,4 @@
-import { fetchAllData } from './data.js';
+import { fetchAllData, EmployeeCategory, PostCategories } from './data.js';
 import { renderSlide } from "./slide.js";
 import { renderAboutSection } from './about.js';
 import { renderProjectSection } from './project.js';
@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 			renderSlide(data);
 			renderAboutSection(data);
 			renderProjectSection(data);
-			renderTeamMembers(data);
-			renderPostSection(data);
+			renderTeamMembers(data, EmployeeCategory);
+			renderPostSection(data, PostCategories);
 			renderInvestment(data);
 			renderNewsSection(data);
 			renderFooterSection(data);

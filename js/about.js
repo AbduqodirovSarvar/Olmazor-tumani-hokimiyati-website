@@ -1,19 +1,11 @@
 import {baseFileUrl } from './data.js';
+import { getCurrentLanguage } from "./translation.js";
 
 export function renderAboutSection(Data) {
-    let about = Data.about; // Assuming Data has been initialized and contains the 'about' property
+    let about = Data.about; 
 
-    // Set the current language
-    let currentLanguage = 'En'; // Change this to dynamically get the user's preferred language (e.g., 'Uz', 'Ru', 'UzRu', 'Kaa')
+    let currentLanguage = getCurrentLanguage();
 
-    // Dynamically access the properties based on the current language
-    let locationName = about.location["name" + currentLanguage];
-    let description = about["description" + currentLanguage];
-    let receptionTime = about["receptionTime" + currentLanguage];
-
-    // Update the HTML content
-    // document.querySelector('#about-section .section-title').textContent = locationName; 
-    // document.querySelector('#about-section .h3').textContent = locationName // This can be dynamic if needed
-    document.querySelector('#about-section .mb-4 p').textContent = description;
-    document.querySelector('#about-section .mb-4').insertAdjacentHTML('beforeend', `<p><b>${receptionTime}</b></p>`); // Adding reception time to the description
+    document.querySelector('#about-section .mb-4 p').textContent = about["description" + currentLanguage];
+    document.querySelector('#about-section .mb-4').insertAdjacentHTML('beforeend', `<p><b>${about["receptionTime" + currentLanguage]}</b></p>`); // Adding reception time to the description
 }
