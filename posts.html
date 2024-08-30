@@ -39,7 +39,7 @@
   </div>
 
 
-  <div class="site-wrap">
+  <div class="site-wrap sticky-wrapper is-sticky" style="height: auto !important;">
 
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
@@ -49,198 +49,202 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
+    <div class="d-flex flex-column">
+      <header class="site-navbar py-4 js-sticky-header site-navbar-target " role="banner">
 
-    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+        <div style="display: flex; justify-content: space-around;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="d-flex align-items-center justify-content-start " style="gap: 1rem;">
+              <div>
+                <img src="./images/olmazor-logo.ico" alt="DigiLab" style="height: 50px;">
+              </div>
+              <div>
+                <h1 class="mb-0 site-logo">
+                  <a href="index.html" class="h2 mb-0">
+                    <b>Olmazor tumani</b>
+                    <span class="text-primary"></span>
+                  </a>
+                </h1>
+              </div>
 
-      <div style="display: flex; justify-content: space-around;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div class="d-flex align-items-center justify-content-start " style="gap: 1rem;">
-            <div>
-              <img src="./images/olmazor-logo.ico" alt="DigiLab" style="height: 50px;">
+              <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#"
+                  class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
+
             </div>
-            <div>
-              <h1 class="mb-0 site-logo">
-                <a href="index.html" class="h2 mb-0">
-                  <b>Olmazor tumani</b>
-                  <span class="text-primary"></span>
-                </a>
-              </h1>
+            <div class="col-12 col-md-10 d-none d-xl-block" style="width: inherit;">
+              <nav class="site-navigation position-relative text-right" role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                  <li class="has-children">
+                    <a href="#home-section" class="nav-link">Hokimlik</a>
+                    <ul class="dropdown">
+                      <li><a href="#" class="nav-link">Funksiyalari va vazifalari</a></li>
+                      <li><a href="#" class="nav-link">Tashkiliy tuzilmalar</a></li>
+                      <li><a href="#" class="nav-link">Raxbariyat</a></li>
+                      <li><a href="#" class="nav-link">Hokimning yordamchilari</a></li>
+                      <li><a href="#" class="nav-link">Xotin-qizlar faollari</a></li>
+                      <li><a href="#" class="nav-link">Yoshlar yetakchilari</a></li>
+                      <li><a href="#" class="nav-link">Sektorlar</a></li>
+                      <li><a href="#" class="nav-link">Qabul kunlari</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a href="#about-section" class="nav-link">Tuman haqida</a>
+                    <ul class="dropdown">
+                      <li><a href="#about-section" class="nav-link">Tuman Tarixi</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="has-children">
+                    <a href="#team-section" class="nav-link">Mahalliy kengash</a>
+                    <ul class="dropdown">
+                      <li><a href="#" class="nav-link">Kengash deputatlari</a></li>
+                      <li><a href="#" class="nav-link">Komisssiyalar</a></li>
+                      <li><a href="#" class="nav-link">Hujjatlar</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="has-children">
+                    <a href="#portfolio-section" class="nav-link">Axborot xizmati</a>
+                    <ul class="dropdown">
+                      <li><a href="#" class="nav-link">Yangiliklar</a></li>
+                      <li><a href="#" class="nav-link">E'lonlar</a></li>
+                      <li><a href="#" class="nav-link">Tumandagi loyihalar</a></li>
+                      <li><a href="#" class="nav-link">OAV biz haqimizda</a></li>
+                      <li><a href="#" class="nav-link">Foto-Galareya</a></li>
+                      <li><a href="#" class="nav-link">Video-Materiallar</a></li>
+                      <li><a href="#" class="nav-link">Axborot xizmati haqida</a></li>
+                    </ul>
+                  </li>
+
+                  <li class="has-children">
+                    <a href="#services-section" class="nav-link">Ochiq ma'lumotlar</a>
+                    <ul class="dropdown">
+                      <li><a href="#" class="nav-link">Tenderlar</a></li>
+                      <li><a href="#" class="nav-link">Korrupsiyaga qarshi kurash</a></li>
+                      <li><a href="#" class="nav-link">Tumandagi invistitsiyalar</a></li>
+                      <li><a href="#" class="nav-link">Bo'sh ish o'rinlari</a></li>
+                      <li><a href="#" class="nav-link">Sektorlar</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a href="#contact-section" class="nav-link">Aloqa</a>
+                    <ul class="dropdown">
+                      <li><a href="#" class="nav-link">
+                          <span class="icon-telegram"></span> Telegram
+                        </a></li>
+                      <li><a href="#" class="nav-link">
+                          <span class="icon-instagram"></span> Instagram
+                        </a></li>
+                      <li><a href="#" class="nav-link">
+                          <span class="icon-facebook"></span> Facebook
+                        </a></li>
+                      <li><a href="#" class="nav-link">
+                          <span class="icon-mail_outline"></span> Email
+                        </a></li>
+                      <li><a href="#" class="nav-link">
+                          <span class="icon-youtube"></span> YouTube
+                        </a></li>
+                      <li><a href="#" class="nav-link">
+                          <span class="icon-twitter"></span> Twitter
+                        </a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a href="#about-section" class="nav-link" id="current-language">O'zbek</a>
+                    <ul class="dropdown">
+                      <li><a href="#" class="nav-link tr-link">O'zbekcha</a></li>
+                      <li><a href="#" class="nav-link tr-link">Русский</a></li>
+                      <li><a href="#" class="nav-link tr-link">English</a></li>
+                      <li><a href="#" class="nav-link tr-link">Узбекча</a></li>
+                      <li><a href="#" class="nav-link tr-link">Qoraqalpoqcha</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
             </div>
-
-            <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#"
-                class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
-
           </div>
-          <div class="col-12 col-md-10 d-none d-xl-block" style="width: inherit;">
-            <nav class="site-navigation position-relative text-right" role="navigation">
+        </div>
 
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="has-children">
-                  <a href="#home-section" class="nav-link">Hokimlik</a>
-                  <ul class="dropdown">
-                    <li><a href="#" class="nav-link">Funksiyalari va vazifalari</a></li>
-                    <li><a href="#" class="nav-link">Tashkiliy tuzilmalar</a></li>
-                    <li><a href="#" class="nav-link">Raxbariyat</a></li>
-                    <li><a href="#" class="nav-link">Hokimning yordamchilari</a></li>
-                    <li><a href="#" class="nav-link">Xotin-qizlar faollari</a></li>
-                    <li><a href="#" class="nav-link">Yoshlar yetakchilari</a></li>
-                    <li><a href="#" class="nav-link">Sektorlar</a></li>
-                    <li><a href="#" class="nav-link">Qabul kunlari</a></li>
-                  </ul>
-                </li>
-                <li class="has-children">
-                  <a href="#about-section" class="nav-link">Tuman haqida</a>
-                  <ul class="dropdown">
-                    <li><a href="#about-section" class="nav-link">Tuman Tarixi</a></li>
-                  </ul>
-                </li>
-
-                <li class="has-children">
-                  <a href="#team-section" class="nav-link">Mahalliy kengash</a>
-                  <ul class="dropdown">
-                    <li><a href="#" class="nav-link">Kengash deputatlari</a></li>
-                    <li><a href="#" class="nav-link">Komisssiyalar</a></li>
-                    <li><a href="#" class="nav-link">Hujjatlar</a></li>
-                  </ul>
-                </li>
-
-                <li class="has-children">
-                  <a href="#portfolio-section" class="nav-link">Axborot xizmati</a>
-                  <ul class="dropdown">
-                    <li><a href="#" class="nav-link">Yangiliklar</a></li>
-                    <li><a href="#" class="nav-link">E'lonlar</a></li>
-                    <li><a href="#" class="nav-link">Tumandagi loyihalar</a></li>
-                    <li><a href="#" class="nav-link">OAV biz haqimizda</a></li>
-                    <li><a href="#" class="nav-link">Foto-Galareya</a></li>
-                    <li><a href="#" class="nav-link">Video-Materiallar</a></li>
-                    <li><a href="#" class="nav-link">Axborot xizmati haqida</a></li>
-                  </ul>
-                </li>
-
-                <li class="has-children">
-                  <a href="#services-section" class="nav-link">Ochiq ma'lumotlar</a>
-                  <ul class="dropdown">
-                    <li><a href="#" class="nav-link">Tenderlar</a></li>
-                    <li><a href="#" class="nav-link">Korrupsiyaga qarshi kurash</a></li>
-                    <li><a href="#" class="nav-link">Tumandagi invistitsiyalar</a></li>
-                    <li><a href="#" class="nav-link">Bo'sh ish o'rinlari</a></li>
-                    <li><a href="#" class="nav-link">Sektorlar</a></li>
-                  </ul>
-                </li>
-                <li class="has-children">
-                  <a href="#contact-section" class="nav-link">Aloqa</a>
-                  <ul class="dropdown">
-                    <li><a href="#" class="nav-link">
-                        <span class="icon-telegram"></span> Telegram
-                      </a></li>
-                    <li><a href="#" class="nav-link">
-                        <span class="icon-instagram"></span> Instagram
-                      </a></li>
-                    <li><a href="#" class="nav-link">
-                        <span class="icon-facebook"></span> Facebook
-                      </a></li>
-                    <li><a href="#" class="nav-link">
-                        <span class="icon-mail_outline"></span> Email
-                      </a></li>
-                    <li><a href="#" class="nav-link">
-                        <span class="icon-youtube"></span> YouTube
-                      </a></li>
-                    <li><a href="#" class="nav-link">
-                        <span class="icon-twitter"></span> Twitter
-                      </a></li>
-                  </ul>
-                </li>
-                <li class="has-children">
-                  <a href="#about-section" class="nav-link" id="current-language">O'zbek</a>
-                  <ul class="dropdown">
-                    <li><a href="#" class="nav-link tr-link">O'zbekcha</a></li>
-                    <li><a href="#" class="nav-link tr-link">Русский</a></li>
-                    <li><a href="#" class="nav-link tr-link">English</a></li>
-                    <li><a href="#" class="nav-link tr-link">Узбекча</a></li>
-                    <li><a href="#" class="nav-link tr-link">Qoraqalpoqcha</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
+      </header>
+      <div style="margin: 10%; margin-left: 10%;margin-right: 20%;height: 80%; width: 80%;">
+        <img src="./images/bg1.jpg" alt="">
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod vitae quaerat ab velit voluptates commodi
+          earum autem, a sapiente, ullam beatae consectetur eligendi! Quo sequi, nesciunt harum fugiat aut repudiandae!
+        </h3>
+      </div>
+    </div>
+    <footer class="site-footer" id="footer-section">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-12">
+            <h1 class="mb-5" style="color: white;">Foydali havolalar</h1>
+          </div>
+        </div>
+        <div class="d-flex mb-5 justify-content-between gap-2" style="overflow-x: auto;">
+          <!-- render by data -->
+        </div>
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row">
+              <div class="col-md-5">
+                <h2 class="footer-heading mb-4">About Us</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum
+                  autem. Amet aliquid nesciunt veritatis aliquam.</p>
+              </div>
+              <div class="col-md-3 ml-auto">
+                <h2 class="footer-heading mb-4">Quick Links</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#about-section" class="smoothscroll">Home</a></li>
+                  <li><a href="#services-section" class="smoothscroll">About</a></li>
+                  <li><a href="#testimonials-section" class="smoothscroll">Projects</a></li>
+                  <li><a href="#testimonials-section" class="smoothscroll">Teams</a></li>
+                  <li><a href="#testimonials-section" class="smoothscroll">Events</a></li>
+                  <li><a href="#testimonials-section" class="smoothscroll">Investments</a></li>
+                  <li><a href="#testimonials-section" class="smoothscroll">News</a></li>
+                  <li><a href="#contact-section" class="smoothscroll">Contact Us</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="pl-0 pr-3"><span class="icon-telegram"></span> Telegram</a></li>
+                  <li><a href="#" class="pl-0 pr-3"><span class="icon-instagram"></span> Instagram</a></li>
+                  <li><a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span> Facebook</a></li>
+                  <li><a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span> Twitter</a></li>
+                  <li><a href="#" class="pl-0 pr-3"><span class="icon-youtube"></span> YouTube</a></li>
+                  <li><a href="#" class="pl-0 pr-3"><span class="icon-mail_outline"></span> Email</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img src="./images/olmazor-logo.ico" alt="LOGO">
           </div>
         </div>
       </div>
-
-    </header>
-
+    </footer>
 
 
+  </div>
 
-    <footer class="site-footer" id="footer-section">
-        <div class="container">
-          <div class="row mt-5">
-            <div class="col-12">
-              <h1 class="mb-5" style="color: white;">Foydali havolalar</h1>
-            </div>
-          </div>
-          <div class="d-flex mb-5 justify-content-between gap-2" style="overflow-x: auto;">
-            <!-- render by data -->
-        </div>
-          <div class="row">
-            <div class="col-md-9">
-              <div class="row">
-                <div class="col-md-5">
-                  <h2 class="footer-heading mb-4">About Us</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum
-                    autem. Amet aliquid nesciunt veritatis aliquam.</p>
-                </div>
-                <div class="col-md-3 ml-auto">
-                  <h2 class="footer-heading mb-4">Quick Links</h2>
-                  <ul class="list-unstyled">
-                    <li><a href="#about-section" class="smoothscroll">Home</a></li>
-                    <li><a href="#services-section" class="smoothscroll">About</a></li>
-                    <li><a href="#testimonials-section" class="smoothscroll">Projects</a></li>
-                    <li><a href="#testimonials-section" class="smoothscroll">Teams</a></li>
-                    <li><a href="#testimonials-section" class="smoothscroll">Events</a></li>
-                    <li><a href="#testimonials-section" class="smoothscroll">Investments</a></li>
-                    <li><a href="#testimonials-section" class="smoothscroll">News</a></li>
-                    <li><a href="#contact-section" class="smoothscroll">Contact Us</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-3">
-                  <h2 class="footer-heading mb-4">Follow Us</h2>
-                  <ul class="list-unstyled">
-                    <li><a href="#" class="pl-0 pr-3"><span class="icon-telegram"></span> Telegram</a></li>
-                    <li><a href="#" class="pl-0 pr-3"><span class="icon-instagram"></span> Instagram</a></li>
-                    <li><a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span> Facebook</a></li>
-                    <li><a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span> Twitter</a></li>
-                    <li><a href="#" class="pl-0 pr-3"><span class="icon-youtube"></span> YouTube</a></li>
-                    <li><a href="#" class="pl-0 pr-3"><span class="icon-mail_outline"></span> Email</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <img src="./images/olmazor-logo.ico" alt="LOGO">
-            </div>
-          </div>
-        </div>
-      </footer>
-  
-  
-    <!-- </div> -->
-  
-    <script type="module" src="js/translation.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-  
-  
-    <script type="module" src="./js/main.js"></script>
-  
-  </body>
-  
-  </html>
+  <script type="module" src="js/translation.js"></script>
+  <script src="./js/posts-html.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/isotope.pkgd.min.js"></script>
+
+
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+
+</html>

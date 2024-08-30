@@ -7,8 +7,6 @@ export function renderFooterSection(Data){
 
     let links = Data.usefulLinks;
 
-    let a = [1,2,3,4];
-
     links.forEach((link, index) => {
         let linkHTML = `
         <div class="d-flex flex-column image-width">

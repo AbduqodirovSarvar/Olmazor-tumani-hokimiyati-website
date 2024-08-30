@@ -2886,3 +2886,34 @@ figure figcaption {
 .gap-2{
   gap: 1rem;
 }
+
+.single-post{
+  margin-top: 300px;
+}
+
+.post-item {
+  margin-bottom: 30px;
+}
+
+.post-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.post-item h3 {
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+.post-item p {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.post-item .read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}

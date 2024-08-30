@@ -11,6 +11,15 @@ export function renderProjectSection(Data) {
 
     let currentLanguage = getCurrentLanguage();
 
+    const projectSection = document.getElementById("site-section");
+
+    const buttonDiv = document.createElement('div'); // projectSection.querySelector(".text-center");
+    buttonDiv.className = "text-center";
+    
+    buttonDiv.insertAdjacentHTML("beforeend", `<p><a href="posts.html?ID=8" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+
+    projectSection.appendChild(buttonDiv);
+
     const row = document.getElementById("site-section-row");
 
     let imgElement = row.querySelector(".owl-carousel.slide-one-item-alt");
@@ -32,7 +41,7 @@ export function renderProjectSection(Data) {
             <div>
                 <h2 class="section-title mb-3">${project["name"+currentLanguage]}</h2>
                 <p>${shortDescription}</p>
-                <p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
+                <p><a href="#">Learn More</a></p>
             </div>
         `;
 

@@ -1,67 +1,10 @@
-import { fetchAllData, EmployeeCategory, PostCategories } from './data.js';
-import { renderSlide } from "./slide.js";
-import { renderAboutSection } from './about.js';
-import { renderProjectSection } from './project.js';
-import { renderTeamMembers } from './team.js';
-import { renderPostSection } from './post.js';
-import { renderInvestment } from './investment.js';
-import { renderNewsSection } from './news.js';
-import { renderFooterSection } from './footer.js';
-
 document.addEventListener('DOMContentLoaded', async () => {
 
 	try{
-		let data =await fetchAllData();
-		if(data){
-			try{
-				renderSlide(data);
-			}
-			catch(error){
-                console.error("Error rendering slide", error);
-            }
-			try{
-				renderAboutSection(data);
-			}
-			catch(error){
-                console.error("Error rendering slide", error);
-            }
-			try{
-				renderProjectSection(data);
-			}
-			catch(error){
-                console.error("Error rendering slide", error);
-            }
-			try{
-				renderTeamMembers(data, EmployeeCategory);
-			}
-			catch(error){
-                console.error("Error rendering slide", error);
-            }
-			try{
-				renderPostSection(data, PostCategories);
-			}
-			catch(error){
-                console.error("Error rendering slide", error);
-            }
-			try{
-				renderInvestment(data);
-			}
-			catch(error){
-                console.error("Error rendering slide", error);
-            }
-			try{
-				renderFooterSection(data);
-			}
-			catch(error){
-                console.error("Error rendering slide", error);
-            }
-			try{
-				renderNewsSection(data);
-			}
-			catch(error){
-                console.error("Error rendering slide", error);
-            }
-		}
+		// let data =await fetchAllData();
+		// if(data){
+		// 	// renderFooterSection(data);
+		// }
 
 		AOS.init({
 			duration: 800,

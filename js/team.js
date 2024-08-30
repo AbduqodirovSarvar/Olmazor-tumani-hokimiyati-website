@@ -54,13 +54,9 @@ export function renderTeamMembers(Data, categories) {
                   </ul>
                   <img src="${baseFileUrl}/${employee.photo}" alt="${employee.firstnameEn} ${employee.lastnameEn}" class="img-fluid">
                 </figure>
-                <div class="p-3">
-                  <h3>${firstName} ${lastName}</h3>
+                <h3>${firstName} ${lastName}</h3>
                   <span class="position">Position: ${employee["position"+ currentLanguage]}</span>
-                </div>
-                <div>
-                  <p><a href="#" class="btn btn-primary mr-2 mb-2">Learn More</a></p>
-                </div>
+                <p><a href="#">Learn More</a></p>
               </div>
             </div>
         `;
