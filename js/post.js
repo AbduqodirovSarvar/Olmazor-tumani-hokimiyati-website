@@ -39,7 +39,7 @@ export function renderPostSection(Data, categories) {
             </a>
             <h3>${post.nameEn}</h3>
             <p>${shortDescription}</p>
-            <p><a href="#">Learn More</a></p>
+            <p><a href="single.html?PostId=${post.id}">Learn More</a></p>
         </div>
         `;
 

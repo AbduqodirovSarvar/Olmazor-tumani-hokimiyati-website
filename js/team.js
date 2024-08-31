@@ -56,7 +56,7 @@ export function renderTeamMembers(Data, categories) {
                 </figure>
                 <h3>${firstName} ${lastName}</h3>
                   <span class="position">Position: ${employee["position"+ currentLanguage]}</span>
-                <p><a href="#">Learn More</a></p>
+                <p><a href="single.html?EmployeeId=${employee.id}">Learn More</a></p>
               </div>
             </div>
         `;

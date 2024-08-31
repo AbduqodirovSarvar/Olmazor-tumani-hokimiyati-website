@@ -41,7 +41,7 @@ export function renderProjectSection(Data) {
             <div>
                 <h2 class="section-title mb-3">${project["name"+currentLanguage]}</h2>
                 <p>${shortDescription}</p>
-                <p><a href="#">Learn More</a></p>
+                <p><a href="single.html?PostId=${project.id}">Learn More</a></p>
             </div>
         `;
 

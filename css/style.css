@@ -2887,33 +2887,19 @@ figure figcaption {
   gap: 1rem;
 }
 
-.single-post{
-  margin-top: 300px;
+.headline {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
 }
-
-.post-item {
-  margin-bottom: 30px;
-}
-
-.post-item img {
+.single-post-img {
   width: 100%;
   height: auto;
-  border-radius: 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.post-item h3 {
-  font-size: 1.5rem;
-  margin-top: 15px;
-}
-
-.post-item p {
-  margin-top: 10px;
-  font-size: 1rem;
-}
-
-.post-item .read-more {
-  display: inline-block;
-  margin-top: 10px;
-  color: #007bff;
-  text-decoration: none;
+.single-post-img img{
+  width: 100%;
+  height: auto;
 }

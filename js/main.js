@@ -7,6 +7,7 @@ import { renderPostSection } from './post.js';
 import { renderInvestment } from './investment.js';
 import { renderNewsSection } from './news.js';
 import { renderFooterSection } from './footer.js';
+import { renderSingleHTML } from './single-html.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -57,6 +58,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 			try{
 				renderNewsSection(data);
+			}
+			catch(error){
+                console.error("Error rendering slide", error);
+            }
+			try{
+				renderSingleHTML(data);
 			}
 			catch(error){
                 console.error("Error rendering slide", error);
