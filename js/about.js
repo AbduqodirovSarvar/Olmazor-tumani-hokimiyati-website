@@ -2,6 +2,10 @@ import {baseFileUrl } from './data.js';
 import { getCurrentLanguage } from "./translation.js";
 
 export function renderAboutSection(Data) {
+    const currentPath = window.location.pathname;
+    if(currentPath.includes("single.html")){
+        return;
+    }
     let about = Data.about; 
 
     let currentLanguage = getCurrentLanguage();

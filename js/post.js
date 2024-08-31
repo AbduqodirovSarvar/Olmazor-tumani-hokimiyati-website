@@ -2,6 +2,11 @@ import { baseFileUrl } from "./data.js";
 import { getCurrentLanguage } from "./translation.js";
 
 export function renderPostSection(Data, categories) {
+    const currentPath = window.location.pathname;
+    if(currentPath.includes("single.html")){
+        return;
+    }
+
     let posts = Data.posts;
     let postSection = document.getElementById("posts");
 
@@ -17,6 +22,7 @@ export function renderPostSection(Data, categories) {
         button.className = "btn btn-primary";
         if (index === 0) {
             button.classList.add("active");
+            localStorage.setItem("currentPostCategorId", category.id);
         }
         button.setAttribute("post-data-filter", `.${category.id}`);
         button.textContent = category["name" + currentLanguage];
@@ -53,6 +59,7 @@ function filterPosts(categoryId) {
         button.classList.remove("active");
     });
     document.querySelector(`[post-data-filter='.${categoryId}']`).classList.add("active");
+    localStorage.setItem("currentPostCategorId", categoryId);
 
     document.querySelectorAll("#posts .item").forEach(post => {
         post.style.display = "none";
@@ -60,7 +67,7 @@ function filterPosts(categoryId) {
 
     const posts = document.querySelectorAll(`#posts .category-${categoryId}`);
     for (let index = 0; index < posts.length; index++) {
-        if (index === 6) {
+        if (index === 4) {
             break;
         }
         posts[index].style.display = "block";

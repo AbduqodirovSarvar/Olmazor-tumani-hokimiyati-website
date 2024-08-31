@@ -2,6 +2,10 @@ import { baseFileUrl } from './data.js';
 import { getCurrentLanguage } from "./translation.js";
 
 export function renderProjectSection(Data) {
+    const currentPath = window.location.pathname;
+    if(currentPath.includes("single.html")){
+        return;
+    }
     const projects = Data.posts.filter(post => post.category.id === 8);
     
     if (projects.length === 0) {
@@ -13,10 +17,10 @@ export function renderProjectSection(Data) {
 
     const projectSection = document.getElementById("site-section");
 
-    const buttonDiv = document.createElement('div'); // projectSection.querySelector(".text-center");
+    const buttonDiv = document.createElement('div');
     buttonDiv.className = "text-center";
     
-    buttonDiv.insertAdjacentHTML("beforeend", `<p><a href="posts.html?ID=8" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+    buttonDiv.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${projects[0].category.id}" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
 
     projectSection.appendChild(buttonDiv);
 

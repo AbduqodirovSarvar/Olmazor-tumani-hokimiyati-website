@@ -8,7 +8,7 @@ export function renderSingleHTML(data){
 
     const employeeCategoryId = urlParams.get('EmployeeCategorId');
     if(employeeCategoryId){
-        renderEmployees(data, employeeCategoryId);
+        renderEmployees(data, employeeCategoryId === "active" ? localStorage.getItem("currentEmployeeCategorId") ?? 1 : employeeCategoryId);
         return;
     }
     const employeeId = urlParams.get('EmployeeId');
@@ -18,7 +18,7 @@ export function renderSingleHTML(data){
     }
     const postCategoryId = urlParams.get('PostCategoryId');
     if(postCategoryId){
-        renderPosts(data, postCategoryId);
+        renderPosts(data, postCategoryId === "active" ? localStorage.getItem("currentPostCategorId") ?? 1 :  postCategoryId);
         return;
     }
     const postId = urlParams.get('PostId');
@@ -28,7 +28,6 @@ export function renderSingleHTML(data){
     }
     
     const sectors = urlParams.get('Sectors');
-    console.log(sectors);
     if(sectors){
         renderSectors(data);
         return;
@@ -36,12 +35,8 @@ export function renderSingleHTML(data){
 
     const sector = urlParams.get('Sectors');
     if(sector){
-        console.log("ALOOOO");
         return;
     }
-
-    renderPost(data, 1);
-
 }
 
 function renderEmployees(Data, categoryId){
@@ -193,8 +188,13 @@ function renderEmployee(Data, employeeId){
 
 function renderPosts(Data, categoryId){
     let posts = Data.posts.filter(e => e.category.id == categoryId);
-    console.log("POSTS:", posts);
 
+    if(posts.length < 2){
+        renderPost(Data, posts[0].id);
+        return;
+    }
+
+    console.log(posts);
     const currentLanguage = getCurrentLanguage();
 
     const container = document.getElementById("single-html-container");
@@ -278,13 +278,12 @@ function renderPost(Data, postId){
                 <div class="mt-3 mb-4 single-post-img">
                     <img src="${baseFileUrl}/${p.photo}" alt="Photo">
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <h4 class="text-primary">${p["name" + currentLanguage]}</h4>
                     <p>${p["description" + currentLanguage]}</p>
                     <p><strong>Sana: </strong> ${formattedDate} ${formattedTime}</p>
                 </div>
             </div>
-            <hr>
         `;
         container.insertAdjacentHTML('beforeend', htmlContent);
     });
@@ -325,12 +324,11 @@ function renderSectors(Data){
             break;
         }
         console.log(`${baseFileUrl}/${p.photo}`);
-        let htmlContent = `
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <img src="${baseFileUrl}/${p.photo}" alt="Photo" class="img-fluid">
-                </div>
-                <div class="col-md-9">
+        // let htmlContentWithPhoto = 
+        let htmlContent = 
+        `
+            <div class="row mb-12">
+                <div class="col-md-12">
                     <h3 class="text-primary">${p["name" + currentLanguage]}</h3>
                     <h5><strong>Rahbari: </strong>${firstName} ${lastName}</h5>
                     <p><strong>Address: </strong> ${p.location["name"+ currentLanguage]}</p>

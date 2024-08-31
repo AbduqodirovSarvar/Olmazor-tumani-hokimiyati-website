@@ -2,11 +2,20 @@ import { baseFileUrl } from './data.js';
 import { getCurrentLanguage } from "./translation.js";
 
 export function renderInvestment(Data){
+  const currentPath = window.location.pathname;
+    if(currentPath.includes("single.html")){
+        return;
+    }
     let investments = Data.posts.filter(post => post.category.id === 14);
 
     const currentLanguage = getCurrentLanguage();
 
     let investmentSection = document.getElementById("services-section");
+
+    let button = document.createElement("div");
+    button.className = "text-center";
+    button.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${investments[0].category.id}" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+    investmentSection.appendChild(button);
 
     let investmentRow = investmentSection.querySelector(".row.align-items-stretch");
 
@@ -25,7 +34,7 @@ export function renderInvestment(Data){
               <div>
                 <h3>${investment.nameEn}</h3>
                 <p>${shortDescription}</p>
-                <p><a href="#">Learn More</a></p>
+                <p><a href="single.html?PostId=${investment.id}">Learn More</a></p>
               </div>
             </div>
           </div>

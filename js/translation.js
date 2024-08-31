@@ -1,25 +1,29 @@
-let languageValue = "Русский";
-switch(localStorage.getItem('current-language-key')){
-    case "En":
-        languageValue = "English";
-        break;
-    case "Uz":
-        languageValue = "O'zbekcha";
-        break;
-    case "UzRu":
-        languageValue = "Узбекча";
-        break;
-    case "Kaa":
-        languageValue = "Qoraqalpoqcha";
-        break;
-    default:
-        console.error('Language not recognized.');
-        break;
+function useTranslate(){
+    let languageValue = "Русский";
+    switch(localStorage.getItem('current-language-key')){
+        case "Ru":
+            languageValue = "Русский";
+            break;
+        case "En":
+            languageValue = "English";
+            break;
+        case "Uz":
+            languageValue = "O'zbekcha";
+            break;
+        case "UzRu":
+            languageValue = "Узбекча";
+            break;
+        case "Kaa":
+            languageValue = "Qoraqalpoqcha";
+            break;
+        default:
+            console.error('Language not recognized.');
+            break;
+    }
+    
+    const navLink = document.getElementById('current-language');
+    navLink.textContent = languageValue;
 }
-
-const navLink = document.getElementById('current-language');
-navLink.textContent = languageValue;
-
 
 export function getCurrentLanguage(){
     return localStorage.getItem('current-language-key') || 'Ru';
@@ -61,3 +65,6 @@ document.querySelectorAll('.tr-link').forEach(link => {
         }
     });
 });
+
+
+useTranslate();

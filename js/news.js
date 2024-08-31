@@ -2,45 +2,58 @@ import { baseFileUrl } from "./data.js";
 import { getCurrentLanguage } from "./translation.js";
 
 export function renderNewsSection(Data){
-    let news = Data.posts.filter(post => post.category.id === 14);
+  const currentPath = window.location.pathname;
+    if(currentPath.includes("single.html")){
+        return;
+    }
+    let news = Data.posts.filter(post => post.category.id === 6);
 
     let currentLanguage = getCurrentLanguage();
 
-    let newsSection = document.getElementById("blog-section");
+    const newsSection = document.getElementById("blog-section");
+
+    let button = document.createElement("div");
+    button.className = "text-center";
+    button.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${news[0].category.id}" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+    newsSection.appendChild(button);
 
     let row = document.getElementById("blog-section-news");
     let a = [1,2,3];
 
-    news.forEach((element, index) => {
-      if(index === 3){
-        return;
+    for (let index = 0; index < news.length; index++) {
+      if (index === 3) {
+          break; // exit the loop when the index is 3
       }
-
+  
+      const element = news[index];
+  
       let shortDescription = element["description" + currentLanguage].length > 100 
             ? element["description" + currentLanguage].substring(0, 100) + "..."
             : element["description" + currentLanguage];
-
+  
       let createdAtDate = new Date(element.createdAt);
       let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
             day: '2-digit',
             month: '2-digit',
-            year: 'numeric'
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
         });
       
       let newHTML = `
         <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">
             <div class="h-entry">
-              <a href="single.html">
+              <a href="single.html?PostId=${element.id}">
                 <img src="${baseFileUrl}/${element.photo}" alt="Image" class="img-fluid">
               </a>
               <h2 class="font-size-regular"><a href="#">${element["name" + currentLanguage]}</a></h2>
               <div class="meta mb-4">Olmazor tumani axborot xizmati <span class="mx-2">&bullet;</span>${formattedDate}<span class="mx-2">&bullet;</span></div>
               <p>${shortDescription}</p>
-              <p><a href="#">Continue Reading...</a></p>
+              <p><a href="single.html?PostId=${element.id}">Continue Reading...</a></p>
             </div> 
         </div>
         `;
-
-        row.insertAdjacentHTML("beforeend", newHTML);
-    });
+  
+      row.insertAdjacentHTML("beforeend", newHTML);
+  }  
 }

@@ -2,9 +2,22 @@ import { baseFileUrl } from "./data.js";
 import { getCurrentLanguage } from "./translation.js";
 
 export function renderTeamMembers(Data, categories) {
+  const currentPath = window.location.pathname;
+    if(currentPath.includes("single.html")){
+        return;
+    }
     let employees = Data.employees;
     const teamMembersContainer = document.getElementById("team-members");
     const currentLanguage = getCurrentLanguage();
+
+    const teamSection = document.getElementById("team-section");
+
+    const buttonDiv = document.createElement('div');
+    buttonDiv.className = "text-center";
+    
+    buttonDiv.insertAdjacentHTML("beforeend", `<p><a href="single.html?EmployeeCategorId=active" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+
+    teamSection.appendChild(buttonDiv);
 
     const filtersDiv = document.getElementById("team-filters");
 
@@ -14,6 +27,7 @@ export function renderTeamMembers(Data, categories) {
         button.className = "btn btn-primary";
         if (index === 0) {
             button.classList.add("active");
+            localStorage.setItem("currentEmployeeCategorId", category.id);
         }
         button.setAttribute("employee-data-filter", `.${category.id}`);
         button.textContent = category["name" + currentLanguage];
@@ -74,6 +88,7 @@ function filterTeamMembers(categoryId) {
         button.classList.remove("active");
     });
     document.querySelector(`[employee-data-filter='.${categoryId}']`).classList.add("active");
+    localStorage.setItem("currentEmployeeCategorId", categoryId);
 
     document.querySelectorAll("#team-members .col-md-6").forEach(member => {
         member.style.display = "none";
@@ -82,7 +97,7 @@ function filterTeamMembers(categoryId) {
     const filteredMembers = document.querySelectorAll(`#team-members .category-${categoryId}`);
 
     for (let index = 0; index < filteredMembers.length; index++) {
-        if (index === 6) {
+        if (index === 4) {
             break;
         }
         filteredMembers[index].style.display = "block";
