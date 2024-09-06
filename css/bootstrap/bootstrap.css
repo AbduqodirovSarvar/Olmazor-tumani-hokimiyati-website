@@ -454,16 +454,18 @@ pre {
   margin-left: auto; }
   @media (min-width: 576px) {
     .container {
-      max-width: 540px; } }
+      max-width: auto;
+    } 
+  }
   @media (min-width: 768px) {
     .container {
-      max-width: 720px; } }
+      max-width: auto; } }
   @media (min-width: 992px) {
     .container {
-      max-width: 960px; } }
+      max-width: auto; } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px; } }
+      max-width: auto; } }
 
 .container-fluid {
   width: 100%;
