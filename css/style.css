@@ -2903,3 +2903,60 @@ figure figcaption {
   width: 100%;
   height: auto;
 }
+
+@media (max-width: 500px) {
+  .site-logo, .site-logo a {
+      display: none !important;
+  }
+}
+
+
+body {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+header.site-navbar {
+  width: 100% !important;
+}
+
+header .site-navbar .container {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 500px) {
+  .site-mobile-menu {
+      display: block !important;
+  }
+
+  .site-navbar {
+      padding: 0 !important;
+  }
+
+  .site-menu {
+      display: none !important;
+  }
+
+  .site-mobile-menu .site-mobile-menu-body {
+      display: block !important;
+  }
+
+  .site-navbar .col-12, .site-navbar .col-md-10 {
+      width: 100% !important;
+      padding: 0 !important;
+  }
+
+  .site-blocks-cover, .site-section, .site-footer {
+      padding: 0 !important;
+  }
+}
+.overFlow-x {
+  overflow-x: hidden !important;
+}

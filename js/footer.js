@@ -18,4 +18,45 @@ export function renderFooterSection(Data){
         `;
         usefulLink.insertAdjacentHTML('beforeend', linkHTML);
     });
+    setItems(Data);
+}
+
+export function setItems(data){
+    let address = document.querySelectorAll(".address");
+    address.forEach(e => {
+        console.log(e);
+    })
+    let phone = document.querySelectorAll(".phone");
+    phone.forEach(e => {
+        console.log(e);
+    });
+    let telegram = document.querySelectorAll('.telegram');
+    telegram.forEach(a => {
+        a.href = `https://t.me/`;
+    });
+
+    let instagram = document.querySelectorAll('.instagram');
+    instagram.forEach(a => {
+        a.href = `https://www.instagram.com/`;
+    });
+
+    let facebook = document.querySelectorAll('.facebook');
+    facebook.forEach(a => {
+        a.href = `https://www.facebook.com/`;
+    });
+
+    let twitter = document.querySelectorAll('.twitter');
+    twitter.forEach(a => {
+        a.href = `https://www.twitter.com/`;
+    });
+
+    let youtube = document.querySelectorAll('.youtube');
+    youtube.forEach(a => {
+        a.href = `https://www.youtube.com/`;
+    });
+
+    let email = document.querySelectorAll('.email');
+    email.forEach(a => {
+        a.href = `mailto:test`;
+    });
 }

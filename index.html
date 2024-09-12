@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-  <title>Olmazor tumani</title>
+  <title data-i18n="header.title">Olmazor tumani</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/x-icon" href="images/olmazor-logo.ico">
 
 
@@ -28,7 +28,7 @@
 
 </head>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" class="overFlow-x">
 
 
   <div id="overlayer"></div>
@@ -56,19 +56,25 @@
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <div class="d-flex align-items-center justify-content-start " style="gap: 1rem;">
             <div>
-              <img src="./images/olmazor-logo.ico" alt="DigiLab" style="height: 50px;">
+              <a href="index.html">
+                <img src="./images/olmazor-logo.ico" alt="DigiLab" style="height: 50px;">
+              </a>
             </div>
             <div>
               <h1 class="mb-0 site-logo">
                 <a href="index.html" class="h2 mb-0">
-                  <b>Olmazor tumani</b>
+                  <b data-i18n="header.title">Olmazor tumani</b>
                   <span class="text-primary"></span>
                 </a>
               </h1>
             </div>
 
-            <div class="col-4 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#"
-                class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
+            <div class="col-4 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative;">
+              <a class="site-menu-toggle js-menu-toggle float-right">
+                <span class="icon-menu h3">
+                </span>
+              </a>
+            </div>
 
           </div>
           <div class="col-12 col-md-10 d-none d-xl-block" style="width: inherit;">
@@ -76,88 +82,88 @@
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="has-children">
-                  <a href="#home-section" class="nav-link">Hokimlik</a>
+                  <a href="#home-section" class="nav-link" data-i18n="header.administration">Hokimlik</a>
                   <ul class="dropdown">
-                    <li><a href="single.html?PostCategoryId=1" class="nav-link">Funksiyalari va vazifalari</a></li>
-                    <li><a href="single.html?PostCategoryId=2" class="nav-link">Tashkiliy tuzilmalar</a></li>
-                    <li><a href="single.html?EmployeeCategorId=1" class="nav-link">Raxbariyat</a></li>
-                    <li><a href="single.html?EmployeeCategorId=2" class="nav-link">Hokimning yordamchilari</a></li>
-                    <li><a href="single.html?EmployeeCategorId=3" class="nav-link">Xotin-qizlar faollari</a></li>
-                    <li><a href="single.html?EmployeeCategorId=4" class="nav-link">Yoshlar yetakchilari</a></li>
-                    <li><a href="single.html?Sectors=sectors" class="nav-link">Sektorlar</a></li>
-                    <li><a href="#about-section" class="nav-link">Qabul kunlari</a></li>
+                    <li><a href="single.html?PostCategoryId=1" class="nav-link" data-i18n="header.selections.tasks">Funksiyalari va vazifalari</a></li>
+                    <li><a href="single.html?PostCategoryId=2" class="nav-link" data-i18n="header.selections.structure">Tashkiliy tuzilmalar</a></li>
+                    <li><a href="single.html?EmployeeCategorId=1" class="nav-link" data-i18n="header.selections.leadership">Raxbariyat</a></li>
+                    <li><a href="single.html?EmployeeCategorId=2" class="nav-link" data-i18n="header.selections.assistants">Hokimning yordamchilari</a></li>
+                    <li><a href="single.html?EmployeeCategorId=3" class="nav-link" data-i18n="header.selections.women_activist">Xotin-qizlar faollari</a></li>
+                    <li><a href="single.html?EmployeeCategorId=4" class="nav-link" data-i18n="header.selections.youth_leader">Yoshlar yetakchilari</a></li>
+                    <li><a href="single.html?Sectors=sectors" class="nav-link" data-i18n="header.selections.sectors">Sektorlar</a></li>
+                    <li><a href="#about-section" class="nav-link" data-i18n="header.selections.reception_days">Qabul kunlari</a></li>
                   </ul>
                 </li>
                 <li class="has-children">
-                  <a href="#about-section" class="nav-link">Tuman haqida</a>
+                  <a href="#about-section" class="nav-link" data-i18n="header.about">Tuman haqida</a>
                   <ul class="dropdown">
-                    <li><a href="#about-section" class="nav-link">Tuman Tarixi</a></li>
-                  </ul>
-                </li>
-
-                <li class="has-children">
-                  <a href="#team-section" class="nav-link">Mahalliy kengash</a>
-                  <ul class="dropdown">
-                    <li><a href="single.html?EmployeeCategorId=5" class="nav-link">Kengash deputatlari</a></li>
-                    <li><a href="single.html?PostCategoryId=4" class="nav-link">Komisssiyalar</a></li>
-                    <li><a href="single.html?PostCategoryId=5" class="nav-link">Hujjatlar</a></li>
+                    <li><a href="#about-section" class="nav-link" data-i18n="header.selections.district_history">Tuman Tarixi</a></li>
                   </ul>
                 </li>
 
                 <li class="has-children">
-                  <a href="#portfolio-section" class="nav-link">Axborot xizmati</a>
+                  <a href="#team-section" class="nav-link" data-i18n="header.council">Mahalliy kengash</a>
                   <ul class="dropdown">
-                    <li><a href="single.html?PostCategoryId=6" class="nav-link">Yangiliklar</a></li>
-                    <li><a href="single.html?PostCategoryId=7" class="nav-link">E'lonlar</a></li>
-                    <li><a href="#site-section" class="nav-link">Tumandagi loyihalar</a></li>
-                    <li><a href="single.html?PostCategoryId=9" class="nav-link">OAV biz haqimizda</a></li>
-                    <li><a href="single.html?PostCategoryId=10" class="nav-link">Foto-Galareya</a></li>
-                    <li><a href="single.html?PostCategoryId=11" class="nav-link">Video-Materiallar</a></li>
-                    <li><a href="#portfolio-section" class="nav-link">Axborot xizmati haqida</a></li>
+                    <li><a href="single.html?EmployeeCategorId=5" class="nav-link" data-i18n="header.selections.council_deputies">Kengash deputatlari</a></li>
+                    <li><a href="single.html?PostCategoryId=4" class="nav-link" data-i18n="header.selections.comissions">Komisssiyalar</a></li>
+                    <li><a href="single.html?PostCategoryId=5" class="nav-link" data-i18n="header.selections.documents">Hujjatlar</a></li>
                   </ul>
                 </li>
 
                 <li class="has-children">
-                  <a href="#services-section" class="nav-link">Ochiq ma'lumotlar</a>
+                  <a href="#portfolio-section" class="nav-link" data-i18n="header.information_service">Axborot xizmati</a>
                   <ul class="dropdown">
-                    <li><a href="single.html?PostCategoryId=12" class="nav-link">Tenderlar</a></li>
-                    <li><a href="single.html?PostCategoryId=13" class="nav-link">Korrupsiyaga qarshi kurash</a></li>
-                    <li><a href="#services-section" class="nav-link">Tumandagi invistitsiyalar</a></li>
-                    <li><a href="single.html?PostCategoryId=15" class="nav-link">Bo'sh ish o'rinlari</a></li>
-                    <li><a href="single.html?Sectors=sectors" class="nav-link">Sektorlar</a></li>
+                    <li><a href="single.html?PostCategoryId=6" class="nav-link" data-i18n="header.selections.news">Yangiliklar</a></li>
+                    <li><a href="single.html?PostCategoryId=7" class="nav-link" data-i18n="header.selections.announcements">E'lonlar</a></li>
+                    <li><a href="#site-section" class="nav-link" data-i18n="header.selections.projects">Tumandagi loyihalar</a></li>
+                    <li><a href="single.html?PostCategoryId=9" class="nav-link" data-i18n="header.selections.oav">OAV biz haqimizda</a></li>
+                    <li><a href="single.html?PostCategoryId=10" class="nav-link" data-i18n="header.selections.photo">Foto-Galareya</a></li>
+                    <li><a href="single.html?PostCategoryId=11" class="nav-link" data-i18n="header.selections.video">Video-Materiallar</a></li>
+                    <li><a href="#portfolio-section" class="nav-link" data-i18n="header.selections.about_information">Axborot xizmati haqida</a></li>
+                  </ul>
+                </li>
+
+                <li class="has-children">
+                  <a href="#services-section" class="nav-link" data-i18n="header.open_data">Ochiq ma'lumotlar</a>
+                  <ul class="dropdown">
+                    <li><a href="single.html?PostCategoryId=12" class="nav-link" data-i18n="header.selections.tenders">Tenderlar</a></li>
+                    <li><a href="single.html?PostCategoryId=13" class="nav-link" data-i18n="header.selections.corruption">Korrupsiyaga qarshi kurash</a></li>
+                    <li><a href="#services-section" class="nav-link" data-i18n="header.selections.investments">Tumandagi invistitsiyalar</a></li>
+                    <li><a href="single.html?PostCategoryId=15" class="nav-link" data-i18n="header.selections.vacancies">Bo'sh ish o'rinlari</a></li>
+                    <li><a href="single.html?Sectors=sectors" class="nav-link" data-i18n="header.selections.sectors">Sektorlar</a></li>
                   </ul>
                 </li>
                 <li class="has-children">
-                  <a href="#contact-section" class="nav-link">Aloqa</a>
+                  <a href="#contact-section" class="nav-link" data-i18n="header.contact">Aloqa</a>
                   <ul class="dropdown">
-                    <li><a target="_blank" href="https://olmazor.uz/" class="nav-link">
+                    <li><a target="_blank" href="https://olmazor.uz/" class="nav-link telegram" data-i18n="header.selections.telegram">
                       <span class="icon-telegram"></span> Telegram
                     </a></li>
-                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link">
+                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link instagram" data-i18n="header.selections.instagram">
                       <span class="icon-instagram"></span> Instagram
                     </a></li>
-                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link">
+                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link facebook" data-i18n="header.selections.facebook">
                       <span class="icon-facebook"></span> Facebook
                     </a></li>
-                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link">
+                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link email" data-i18n="header.selections.email">
                       <span class="icon-mail_outline"></span> Email
                     </a></li>
-                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link">
+                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link youtube" data-i18n="header.selections.youtube">
                       <span class="icon-youtube"></span> YouTube
                     </a></li>
-                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link">
+                  <li><a target="_blank" href="https://olmazor.uz/" class="nav-link twitter" data-i18n="header.selections.twitter">
                       <span class="icon-twitter"></span> Twitter
                     </a></li>
                   </ul>
                 </li>
                 <li class="has-children">
-                  <a href="#about-section" class="nav-link" id="current-language">O'zbek</a>
+                  <a class="nav-link" id="current-language">O'zbek</a>
                   <ul class="dropdown">
-                    <li><a href="#" class="nav-link tr-link">O'zbekcha</a></li>
-                    <li><a href="#" class="nav-link tr-link">Русский</a></li>
-                    <li><a href="#" class="nav-link tr-link">English</a></li>
-                    <li><a href="#" class="nav-link tr-link">Узбекча</a></li>
-                    <li><a href="#" class="nav-link tr-link">Qoraqalpoqcha</a></li>
+                    <li><a class="nav-link tr-link">O'zbekcha</a></li>
+                    <li><a class="nav-link tr-link">Русский</a></li>
+                    <li><a class="nav-link tr-link">English</a></li>
+                    <li><a class="nav-link tr-link">Узбекча</a></li>
+                    <li><a class="nav-link tr-link">Qoraqalpoqcha</a></li>
                   </ul>
                 </li>
               </ul>
@@ -193,7 +199,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center" data-aos="fade">
-            <h2 class="section-title mb-3">Tuman haqida</h2>
+            <h2 class="section-title mb-3" data-i18n="header.about">Tuman haqida</h2>
           </div>
         </div>
         <div class="row">
@@ -216,8 +222,8 @@
       <div class="container">
         <div class="row mb-5 justify-content-center">
           <div class="col-md-7 text-center">
-            <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Tumandagi Loyihalar</h2>
-            <p class="lead" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus minima neque tempora reiciendis.</p>
+            <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="" data-i18n="projects">Tumandagi Loyihalar</h2>
+            <p class="lead" data-aos="fade-up" data-aos-delay="100" data-i18n="project_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus minima neque tempora reiciendis.</p>
           </div>
         </div>
         <div class="row" id="site-section-row">
@@ -243,8 +249,8 @@
       <div class="container">
         <div class="row mb-5 justify-content-center">
           <div class="col-md-8 text-center">
-            <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Bizning jamoa</h2>
-            <p class="lead" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet consectetur adipisicing
+            <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="" data-i18n="teams">Bizning jamoa</h2>
+            <p class="lead" data-aos="fade-up" data-aos-delay="100" data-i18n="teams_description">Lorem ipsum dolor sit amet consectetur adipisicing
               elit. Minus minima neque tempora reiciendis.</p>
           </div>
         </div>
@@ -265,7 +271,7 @@
 
         <div class="row mb-3">
           <div class="col-12 text-center" data-aos="fade">
-            <h2 class="section-title mb-3">Voqealar</h2>
+            <h2 class="section-title mb-3" data-i18n="events">Voqealar</h2>
           </div>
         </div>
 
@@ -290,7 +296,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center" data-aos="fade">
-            <h2 class="section-title mb-3">Invistitsiyalar</h2>
+            <h2 class="section-title mb-3" data-i18n="header.selections.investments">Invistitsiyalar</h2>
           </div>
         </div>
         <div class="row align-items-stretch">
@@ -303,7 +309,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center" data-aos="fade">
-            <h2 class="section-title mb-3">So'nggi yangiliklar</h2>
+            <h2 class="section-title mb-3" data-i18n="latest_news">So'nggi yangiliklar</h2>
           </div>
         </div>
 
@@ -317,7 +323,7 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-12 text-center">
-            <h2 class="section-title mb-3">Contact Us</h2>
+            <h2 class="section-title mb-3" data-i18n="contact_us">Contact Us</h2>
           </div>
         </div>
         <div class="row mb-5">
@@ -327,19 +333,19 @@
           <div class="col-md-4 text-center">
             <p class="mb-4">
               <span class="icon-room d-block h4 text-primary"></span>
-              <span>203 Fake St. Mountain View, San Francisco, California, USA</span>
+              <span class="address">203 Fake St. Mountain View, San Francisco, California, USA</span>
             </p>
           </div>
           <div class="col-md-4 text-center">
             <p class="mb-4">
               <span class="icon-phone d-block h4 text-primary"></span>
-              <a href="#">+1 232 3235 324</a>
+              <a href="#" class="phone">+1 232 3235 324</a>
             </p>
           </div>
           <div class="col-md-4 text-center">
             <p class="mb-0">
               <span class="icon-mail_outline d-block h4 text-primary"></span>
-              <a href="#">youremail@domain.com</a>
+              <a href="#" class="email">youremail@domain.com</a>
             </p>
           </div>
         </div>
@@ -350,15 +356,15 @@
 
             <form action="#" class="p-5 bg-white">
 
-              <h2 class="h4 text-black mb-5">Contact Form</h2>
+              <h2 class="h4 text-black mb-5" data-i18n="contact_form.title">Contact Form</h2>
 
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
-                  <label class="text-black" for="fname">First Name</label>
+                  <label class="text-black" for="fname" data-i18n="contact_form.first_name">First Name</label>
                   <input type="text" id="fname" class="form-control">
                 </div>
                 <div class="col-md-6">
-                  <label class="text-black" for="lname">Last Name</label>
+                  <label class="text-black" for="lname" data-i18n="contact_form.last_name">Last Name</label>
                   <input type="text" id="lname" class="form-control">
                 </div>
               </div>
@@ -366,7 +372,7 @@
               <div class="row form-group">
 
                 <div class="col-md-12">
-                  <label class="text-black" for="email">Email</label>
+                  <label class="text-black" for="email" data-i18n="contact_form.email_phone">Email</label>
                   <input type="email" id="email" class="form-control">
                 </div>
               </div>
@@ -374,14 +380,14 @@
               <div class="row form-group">
 
                 <div class="col-md-12">
-                  <label class="text-black" for="subject">Subject</label>
+                  <label class="text-black" for="subject" data-i18n="contact_form.subject">Subject</label>
                   <input type="subject" id="subject" class="form-control">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="text-black" for="message">Message</label>
+                  <label class="text-black" for="message" data-i18n="contact_form.message">Message</label>
                   <textarea name="message" id="message" cols="30" rows="7" class="form-control"
                     placeholder="Write your notes or questions here..."></textarea>
                 </div>
@@ -389,7 +395,7 @@
 
               <div class="row form-group">
                 <div class="col-md-12">
-                  <input type="submit" value="Send Message" class="btn btn-primary btn-md text-white">
+                  <input type="submit" id="submitButton" class="btn btn-primary btn-md text-white">
                 </div>
               </div>
 
@@ -416,32 +422,30 @@
           <div class="col-md-9">
             <div class="row">
               <div class="col-md-5">
-                <h2 class="footer-heading mb-4">About Us</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum
+                <h2 class="footer-heading mb-4" data-i18n="footer.address">About Us</h2>
+                <p class="address">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque facere laudantium magnam voluptatum
                   autem. Amet aliquid nesciunt veritatis aliquam.</p>
               </div>
               <div class="col-md-3 ml-auto">
-                <h2 class="footer-heading mb-4">Quick Links</h2>
+                <h2 class="footer-heading mb-4" data-i18n="footer.quick_links">Quick Links</h2>
                 <ul class="list-unstyled">
-                  <li><a href="#about-section" class="smoothscroll">Home</a></li>
-                  <li><a href="#services-section" class="smoothscroll">About</a></li>
-                  <li><a href="#testimonials-section" class="smoothscroll">Projects</a></li>
-                  <li><a href="#testimonials-section" class="smoothscroll">Teams</a></li>
-                  <li><a href="#testimonials-section" class="smoothscroll">Events</a></li>
-                  <li><a href="#testimonials-section" class="smoothscroll">Investments</a></li>
-                  <li><a href="#testimonials-section" class="smoothscroll">News</a></li>
-                  <li><a href="#contact-section" class="smoothscroll">Contact Us</a></li>
+                  <li><a href="index.html" class="smoothscroll" data-i18n="footer.home">Home</a></li>
+                  <li><a href="#about-section" class="smoothscroll" data-i18n="footer.about">About</a></li>
+                  <li><a href="#team-sectionn" class="smoothscroll" data-i18n="footer.teams">Teams</a></li>
+                  <li><a href="#portfolio-section" class="smoothscroll" data-i18n="footer.events">Events</a></li>
+                  <li><a href="#blog-section" class="smoothscroll" data-i18n="footer.news">News</a></li>
+                  <li><a href="#contact-section" class="smoothscroll" data-i18n="footer.contact">Contact Us</a></li>
                 </ul>
               </div>
               <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Follow Us</h2>
+                <h2 class="footer-heading mb-4" data-i18n="footer.follow_us">Follow Us</h2>
                 <ul class="list-unstyled">
-                  <li><a href="#" class="pl-0 pr-3"><span class="icon-telegram"></span> Telegram</a></li>
-                  <li><a href="#" class="pl-0 pr-3"><span class="icon-instagram"></span> Instagram</a></li>
-                  <li><a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span> Facebook</a></li>
-                  <li><a href="#" class="pl-0 pr-3"><span class="icon-twitter"></span> Twitter</a></li>
-                  <li><a href="#" class="pl-0 pr-3"><span class="icon-youtube"></span> YouTube</a></li>
-                  <li><a href="#" class="pl-0 pr-3"><span class="icon-mail_outline"></span> Email</a></li>
+                  <li><a href="#" class="pl-0 pr-3 telegram" data-i18n="header.selections.telegram"><span class="icon-telegram"></span> Telegram</a></li>
+                  <li><a href="#" class="pl-0 pr-3 instagram" data-i18n="header.selections.instagram"><span class="icon-instagram"></span> Instagram</a></li>
+                  <li><a href="#" class="pl-0 pr-3 facebook" data-i18n="header.selections.facebook"><span class="icon-facebook"></span> Facebook</a></li>
+                  <li><a href="#" class="pl-0 pr-3 twitter" data-i18n="header.selections.twitter"><span class="icon-twitter"></span> Twitter</a></li>
+                  <li><a href="#" class="pl-0 pr-3 youtube" data-i18n="header.selections.youtube"><span class="icon-youtube"></span> YouTube</a></li>
+                  <li><a href="#" class="pl-0 pr-3 email" data-i18n="header.selections.email"><span class="icon-mail_outline"></span> Email</a></li>
                 </ul>
               </div>
             </div>
@@ -455,6 +459,72 @@
 
 
   </div>
+
+  <script>
+    let languageValue = "Русский";
+    switch(localStorage.getItem('current-language-key')){
+        case "Ru":
+            languageValue = "Русский";
+            break;
+        case "En":
+            languageValue = "English";
+            break;
+        case "Uz":
+            languageValue = "O'zbekcha";
+            break;
+        case "UzRu":
+            languageValue = "Узбекча";
+            break;
+        case "Kaa":
+            languageValue = "Qoraqalpoqcha";
+            break;
+        default:
+            console.error('Language not recognized.');
+            break;
+    }
+    
+    let currentLang = document.getElementById('current-language');
+    currentLang.textContent = languageValue;
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+    document.body.addEventListener('click', (event) => {
+        if (event.target.classList.contains('tr-link')) {
+            console.log('link clicked');
+            event.preventDefault();
+            const language = event.target.textContent.trim();
+            const navLink = document.getElementById('current-language');
+            navLink.textContent = language;
+            console.log(language);
+            switch (language) {
+                case "O'zbekcha":
+                    setLanguage('Uz');
+                    break;
+                case "English":
+                    setLanguage('En');
+                    break;
+                case "Русский":
+                    setLanguage('Ru');
+                    break;
+                case "Узбекча":
+                    setLanguage('UzRu');
+                    break;
+                case "Qoraqalpoqcha":
+                    setLanguage('Kaa');
+                    break;
+                default:
+                    console.error('Language not recognized.');
+                    break;
+              }
+            }
+          });
+        });
+
+    function setLanguage(languageCode) {
+        localStorage.setItem('current-language-key', languageCode);
+        location.reload();
+    }
+  </script>
 
   <script type="module" src="js/translation.js"></script>
   <script src="js/jquery-3.3.1.min.js"></script>

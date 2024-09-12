@@ -8,9 +8,9 @@ import { renderInvestment } from './investment.js';
 import { renderNewsSection } from './news.js';
 import { renderFooterSection } from './footer.js';
 import { renderSingleHTML } from './single-html.js';
+import { getCurrentLanguage, useTranslate } from './translation.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-
 	try{
 		let data =await fetchAllData();
 		if(data){
@@ -68,6 +68,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 			catch(error){
                 console.error("Error rendering slide", error);
             }
+			try {
+				let languageCode = getCurrentLanguage();
+				fetch(`/resources/${languageCode}.json`)
+				.then(response => {
+					return response.json();
+				})
+				.then(jsonFile => {
+					useTranslate(jsonFile);
+				})
+				.catch(error => {
+					console.error('Error loading language file:', error);
+				});
+			} catch(error) {
+				console.error("Error rendering slide", error);
+			}
 		}
 
 		AOS.init({
@@ -244,28 +259,28 @@ document.addEventListener('DOMContentLoaded', async () => {
 			   navText: ['<span class="icon-keyboard_arrow_left">', '<span class="icon-keyboard_arrow_right">']
 			 });
 	   
-			 // $('.slide-one-item-alt').owlCarousel({
-			 //   center: false,
-			 //   items: 1,
-			 //   loop: true,
-				   // stagePadding: 0,
-				   // smartSpeed: 700,
-			 //   margin: 0,
-			 //   autoplay: true,
-			 //   pauseOnHover: false,
+			 $('.slide-one-item-alt').owlCarousel({
+			   center: false,
+			   items: 1,
+			   loop: true,
+				   stagePadding: 0,
+				   smartSpeed: 700,
+			   margin: 0,
+			   autoplay: true,
+			   pauseOnHover: false,
 	   
-			 // });
+			 });
 	   
-			 // $('.slide-one-item-alt-text').owlCarousel({
-			 //   center: false,
-			 //   items: 1,
-			 //   loop: true,
-				   // stagePadding: 0,
-				   // smartSpeed: 700,
-			 //   margin: 0,
-			 //   autoplay: true,
-			 //   pauseOnHover: false,
-			 // });
+			 $('.slide-one-item-alt-text').owlCarousel({
+			   center: false,
+			   items: 1,
+			   loop: true,
+				   stagePadding: 0,
+				   smartSpeed: 700,
+			   margin: 0,
+			   autoplay: true,
+			   pauseOnHover: false,
+			 });
 	   
 			 $('.slide-one-item-alt').owlCarousel({
 			   center: false,
@@ -360,22 +375,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 		   siteSticky();
 	   
 		   // navigation
-		 var OnePageNavigation = function() {
-		   var navToggler = $('.site-menu-toggle');
-			  $("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
-			 e.preventDefault();
+		//  var OnePageNavigation = function() {
+		//    var navToggler = $('.site-menu-toggle');
+		// 	  $("body").on("click", ".main-menu li a[href^='#'], .smoothscroll[href^='#'], .site-mobile-menu .site-nav-wrap li a", function(e) {
+		// 	 e.preventDefault();
 	   
-			 var hash = this.hash;
+		// 	 var hash = this.hash;
 	   
-			 $('html, body').animate({
-			   'scrollTop': $(hash).offset().top
-			 }, 600, 'easeInOutExpo', function(){
-			   window.location.hash = hash;
-			 });
+		// 	 $('html, body').animate({
+		// 	   'scrollTop': $(hash).offset().top
+		// 	 }, 600, 'easeInOutExpo', function(){
+		// 	   window.location.hash = hash;
+		// 	 });
 	   
-		   });
-		 };
-		 OnePageNavigation();
+		//    });
+		//  };
+		//  OnePageNavigation();
 	   
 		 var siteScroll = function() {
 	   
