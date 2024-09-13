@@ -2904,13 +2904,6 @@ figure figcaption {
   height: auto;
 }
 
-@media (max-width: 500px) {
-  .site-logo, .site-logo a {
-      display: none !important;
-  }
-}
-
-
 body {
   width: 100% !important;
   margin: 0 !important;
@@ -2923,15 +2916,18 @@ header.site-navbar {
 
 header .site-navbar .container {
   max-width: 100% !important;
-  padding: 0 !important;
+  padding: 10px !important;
 }
 
-img {
-  max-width: 100% !important;
-  height: auto !important;
-}
+/* img {
+  width: 100% !important;
+} */
 
 @media (max-width: 500px) {
+  .site-logo, .site-logo a {
+    display: none !important;
+  }
+
   .site-mobile-menu {
       display: block !important;
   }
@@ -2957,6 +2953,7 @@ img {
       padding: 0 !important;
   }
 }
+
 .overFlow-x {
   overflow-x: hidden !important;
 }

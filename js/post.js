@@ -3,7 +3,7 @@ import { getCurrentLanguage } from "./translation.js";
 
 export function renderPostSection(Data, categories) {
     const currentPath = window.location.pathname;
-    if(currentPath.includes("single.html")){
+    if (currentPath.includes("single.html")) {
         return;
     }
 
@@ -25,7 +25,7 @@ export function renderPostSection(Data, categories) {
             localStorage.setItem("currentPostCategorId", category.id);
         }
         button.setAttribute("post-data-filter", `.${category.id}`);
-        button.textContent = category["name" + currentLanguage];
+        button.textContent = category["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
         button.addEventListener("click", () => filterPosts(category.id));
         
         // Append the button to the filters div
@@ -33,9 +33,14 @@ export function renderPostSection(Data, categories) {
     });
 
     posts.forEach((post, index) => {
-        let shortDescription = post["description" + currentLanguage].length > 100 
-            ? post["description" + currentLanguage].substring(0, 100) + "..."
-            : post["description" + currentLanguage];
+        // Process description and name to replace \n with <br>
+        let shortDescription = post["description" + currentLanguage];
+        shortDescription = shortDescription.length > 100 
+            ? shortDescription.substring(0, 100) + "..."
+            : shortDescription;
+        shortDescription = shortDescription.replace(/\\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
+
+        let name = post["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
 
         const postHTML = `
         <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 category-${post.category.id}">
@@ -43,13 +48,13 @@ export function renderPostSection(Data, categories) {
               <span class="icon-search2"></span>
               <img class="img-fluid" src="${baseFileUrl}/${post.photo}">
             </a>
-            <h3>${post.nameEn}</h3>
-            <p>${shortDescription}</p>
+            <h3>${name}</h3> <!-- Updated to use name with <br> -->
+            <p>${shortDescription}</p> <!-- Updated to use description with <br> -->
             <p><a href="single.html?PostId=${post.id}">Learn More</a></p>
         </div>
         `;
 
-        postSection.insertAdjacentHTML('beforeend', postHTML); 
+        postSection.insertAdjacentHTML('beforeend', postHTML);
     });
     filterPosts(categories[0].id);
 }

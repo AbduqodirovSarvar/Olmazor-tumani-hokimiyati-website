@@ -12,6 +12,6 @@ export function renderSlide(Data){
 
     const currentLanguage = getCurrentLanguage();
 
-    document.querySelector('.site-blocks-cover h1').textContent = slide["name" + currentLanguage];
-    document.querySelector('.site-blocks-cover .desc').textContent = slide["description" + currentLanguage];
+    document.querySelector('.site-blocks-cover h1').textContent = slide["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"');
+    document.querySelector('.site-blocks-cover .desc').textContent = slide["description" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"');
 }

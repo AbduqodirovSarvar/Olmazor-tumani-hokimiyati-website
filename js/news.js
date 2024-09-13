@@ -1,11 +1,12 @@
 import { baseFileUrl } from "./data.js";
 import { getCurrentLanguage } from "./translation.js";
 
-export function renderNewsSection(Data){
-  const currentPath = window.location.pathname;
-    if(currentPath.includes("single.html")){
+export function renderNewsSection(Data) {
+    const currentPath = window.location.pathname;
+    if (currentPath.includes("single.html")) {
         return;
     }
+
     let news = Data.posts.filter(post => post.category.id === 6);
 
     let currentLanguage = getCurrentLanguage();
@@ -18,42 +19,46 @@ export function renderNewsSection(Data){
     newsSection.appendChild(button);
 
     let row = document.getElementById("blog-section-news");
-    let a = [1,2,3];
 
     for (let index = 0; index < news.length; index++) {
-      if (index === 3) {
-          break; // exit the loop when the index is 3
-      }
-  
-      const element = news[index];
-  
-      let shortDescription = element["description" + currentLanguage].length > 100 
-            ? element["description" + currentLanguage].substring(0, 100) + "..."
-            : element["description" + currentLanguage];
-  
-      let createdAtDate = new Date(element.createdAt);
-      let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
+        if (index === 3) {
+            break; // exit the loop when the index is 3
+        }
+
+        const element = news[index];
+
+        // Process description and name to replace \n with <br>
+        let shortDescription = element["description" + currentLanguage];
+        shortDescription = shortDescription.length > 100 
+            ? shortDescription.substring(0, 100) + "..."
+            : shortDescription;
+        shortDescription = shortDescription.replace(/\\n/g, '<br>').replace(/\\"/g, '"');
+
+        let name = element["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"');
+
+        let createdAtDate = new Date(element.createdAt);
+        let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric',
             hour: '2-digit',
             minute: '2-digit'
         });
-      
-      let newHTML = `
+
+        let newHTML = `
         <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">
             <div class="h-entry">
-              <a href="single.html?PostId=${element.id}">
-                <img src="${baseFileUrl}/${element.photo}" alt="Image" class="img-fluid">
-              </a>
-              <h2 class="font-size-regular"><a href="#">${element["name" + currentLanguage]}</a></h2>
-              <div class="meta mb-4">Olmazor tumani axborot xizmati <span class="mx-2">&bullet;</span>${formattedDate}<span class="mx-2">&bullet;</span></div>
-              <p>${shortDescription}</p>
-              <p><a href="single.html?PostId=${element.id}">Continue Reading...</a></p>
+                <a href="single.html?PostId=${element.id}">
+                    <img src="${baseFileUrl}/${element.photo}" alt="Image" class="img-fluid">
+                </a>
+                <h2 class="font-size-regular"><a href="#">${name}</a></h2>
+                <div class="meta mb-4">Olmazor tumani axborot xizmati <span class="mx-2">&bullet;</span>${formattedDate}<span class="mx-2">&bullet;</span></div>
+                <p>${shortDescription}</p>
+                <p><a href="single.html?PostId=${element.id}">Continue Reading...</a></p>
             </div> 
         </div>
         `;
-  
-      row.insertAdjacentHTML("beforeend", newHTML);
-  }  
+
+        row.insertAdjacentHTML("beforeend", newHTML);
+    }
 }
