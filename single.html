@@ -49,8 +49,6 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    <div class="d-flex flex-column">
-      <header class="site-navbar py-4 js-sticky-header site-navbar-target " role="banner">
 
         <div style="display: flex; justify-content: space-around;">
           <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -169,14 +167,166 @@
           </div>
         </div>
 
-      </header>
+      </header> -->
       
+      <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+        <div style="display: flex; justify-content: space-around;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="d-flex align-items-center justify-content-start " style="gap: 0.5rem;">
+              <div class="ml-4"> 
+                <a href="index.html">
+                  <img src="./images/olmazor-logo.ico" alt="DigiLab" style="width: 50px; height: 50px;">
+                </a>
+              </div>
+              <div>
+                <h1 class="mb-0 site-logo">
+                  <a href="index.html" class="h2 mb-0">
+                    <b data-i18n="header.title">Olmazor tumani</b>
+                    <span class="text-primary"></span>
+                  </a>
+                </h1>
+              </div>
+  
+              <div class="col-4 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative;">
+                <a class="site-menu-toggle js-menu-toggle float-right">
+                  <span class="icon-menu h3">
+                  </span>
+                </a>
+              </div>
+  
+            </div>
+            <div class="col-12 col-md-10 d-none d-xl-block" style="width: inherit;">
+              <nav class="site-navigation position-relative text-right d-flex" role="navigation">
+  
+                <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                  <li class="has-children">
+                    <a href="index.html#home-section" class="nav-link" data-i18n="header.administration">Hokimlik</a>
+                    <ul class="dropdown">
+                      <li><a href="single.html?PostCategoryId=1" class="nav-link"
+                          data-i18n="header.selections.tasks">Funksiyalari va vazifalari</a></li>
+                      <li><a href="single.html?PostCategoryId=2" class="nav-link"
+                          data-i18n="header.selections.structure">Tashkiliy tuzilmalar</a></li>
+                      <li><a href="single.html?EmployeeCategorId=1" class="nav-link"
+                          data-i18n="header.selections.leadership">Raxbariyat</a></li>
+                      <li><a href="single.html?EmployeeCategorId=2" class="nav-link"
+                          data-i18n="header.selections.assistants">Hokimning yordamchilari</a></li>
+                      <li><a href="single.html?EmployeeCategorId=3" class="nav-link"
+                          data-i18n="header.selections.women_activist">Xotin-qizlar faollari</a></li>
+                      <li><a href="single.html?EmployeeCategorId=4" class="nav-link"
+                          data-i18n="header.selections.youth_leader">Yoshlar yetakchilari</a></li>
+                      <li><a href="single.html?Sectors=sectors" class="nav-link"
+                          data-i18n="header.selections.sectors">Sektorlar</a></li>
+                      <li><a href="index.html#about-section" class="nav-link" data-i18n="header.selections.reception_days">Qabul
+                          kunlari</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a href="index.html#about-section" class="nav-link" data-i18n="header.about">Tuman haqida</a>
+                    <ul class="dropdown">
+                      <li><a href="index.html#about-section" class="nav-link" data-i18n="header.selections.district_history">Tuman
+                          Tarixi</a></li>
+                    </ul>
+                  </li>
+  
+                  <li class="has-children">
+                    <a href="index.html#team-section" class="nav-link" data-i18n="header.council">Mahalliy kengash</a>
+                    <ul class="dropdown">
+                      <li><a href="single.html?EmployeeCategorId=5" class="nav-link"
+                          data-i18n="header.selections.council_deputies">Kengash deputatlari</a></li>
+                      <li><a href="single.html?PostCategoryId=4" class="nav-link"
+                          data-i18n="header.selections.comissions">Komisssiyalar</a></li>
+                      <li><a href="single.html?PostCategoryId=5" class="nav-link"
+                          data-i18n="header.selections.documents">Hujjatlar</a></li>
+                    </ul>
+                  </li>
+  
+                  <li class="has-children">
+                    <a href="#index.htmlportfolio-section" class="nav-link" data-i18n="header.information_service">Axborot
+                      xizmati</a>
+                    <ul class="dropdown">
+                      <li><a href="single.html?PostCategoryId=6" class="nav-link"
+                          data-i18n="header.selections.news">Yangiliklar</a></li>
+                      <li><a href="single.html?PostCategoryId=7" class="nav-link"
+                          data-i18n="header.selections.announcements">E'lonlar</a></li>
+                      <li><a href="index.html#site-section" class="nav-link" data-i18n="header.selections.projects">Tumandagi
+                          loyihalar</a></li>
+                      <li><a href="single.html?PostCategoryId=9" class="nav-link" data-i18n="header.selections.oav">OAV
+                          biz haqimizda</a></li>
+                      <li><a href="single.html?PostCategoryId=10" class="nav-link"
+                          data-i18n="header.selections.photo">Foto-Galareya</a></li>
+                      <li><a href="single.html?PostCategoryId=11" class="nav-link"
+                          data-i18n="header.selections.video">Video-Materiallar</a></li>
+                      <li><a href="index.html#portfolio-section" class="nav-link"
+                          data-i18n="header.selections.about_information">Axborot xizmati haqida</a></li>
+                    </ul>
+                  </li>
+  
+                  <li class="has-children">
+                    <a href="index.html#services-section" class="nav-link" data-i18n="header.open_data">Ochiq ma'lumotlar</a>
+                    <ul class="dropdown">
+                      <li><a href="single.html?PostCategoryId=12" class="nav-link"
+                          data-i18n="header.selections.tenders">Tenderlar</a></li>
+                      <li><a href="single.html?PostCategoryId=13" class="nav-link"
+                          data-i18n="header.selections.corruption">Korrupsiyaga qarshi kurash</a></li>
+                      <li><a href="index.html#services-section" class="nav-link" data-i18n="header.selections.investments">Tumandagi
+                          invistitsiyalar</a></li>
+                      <li><a href="single.html?PostCategoryId=15" class="nav-link"
+                          data-i18n="header.selections.vacancies">Bo'sh ish o'rinlari</a></li>
+                      <li><a href="single.html?Sectors=sectors" class="nav-link"
+                          data-i18n="header.selections.sectors">Sektorlar</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a href="index.html#contact-section" class="nav-link" data-i18n="header.contact">Aloqa</a>
+                    <ul class="dropdown">
+                      <li><a target="_blank" href="https://olmazor.uz/" class="nav-link telegram"
+                          data-i18n="header.selections.telegram">
+                          <span class="icon-telegram"></span> Telegram
+                        </a></li>
+                      <li><a target="_blank" href="https://olmazor.uz/" class="nav-link instagram"
+                          data-i18n="header.selections.instagram">
+                          <span class="icon-instagram"></span> Instagram
+                        </a></li>
+                      <li><a target="_blank" href="https://olmazor.uz/" class="nav-link facebook"
+                          data-i18n="header.selections.facebook">
+                          <span class="icon-facebook"></span> Facebook
+                        </a></li>
+                      <li><a target="_blank" href="https://olmazor.uz/" class="nav-link email"
+                          data-i18n="header.selections.email">
+                          <span class="icon-mail_outline"></span> Email
+                        </a></li>
+                      <li><a target="_blank" href="https://olmazor.uz/" class="nav-link youtube"
+                          data-i18n="header.selections.youtube">
+                          <span class="icon-youtube"></span> YouTube
+                        </a></li>
+                      <li><a target="_blank" href="https://olmazor.uz/" class="nav-link twitter"
+                          data-i18n="header.selections.twitter">
+                          <span class="icon-twitter"></span> Twitter
+                        </a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a class="nav-link" id="current-language">O'zbek</a>
+                    <ul class="dropdown">
+                      <li><a class="nav-link tr-link">O'zbekcha</a></li>
+                      <li><a class="nav-link tr-link">Русский</a></li>
+                      <li><a class="nav-link tr-link">English</a></li>
+                      <li><a class="nav-link tr-link">Узбекча</a></li>
+                      <li><a class="nav-link tr-link">Qoraqalpoqcha</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+
     <div style="height: 100px;"></div>
 
     <div class="container mt-5" id="single-html-container"></div>
   
-    </div>
-
     <footer class="site-footer" id="footer-section">
       <div class="container">
         <div class="row mt-5">
