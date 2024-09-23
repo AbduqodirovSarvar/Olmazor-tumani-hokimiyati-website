@@ -227,12 +227,16 @@ function renderPosts(Data, categoryId) {
         let htmlContent = `
             <div class="row mb-3">
                 <div class="col-md-3">
-                    <img src="${baseFileUrl}/${p.photo}" alt="Photo" class="img-fluid">
+                <a href="single.html?PostId=${p.id}">
+                        <img src="${baseFileUrl}/${p.photo}" alt="Photo" class="img-fluid">
+                    </a>
                 </div>
                 <div class="col-md-9">
-                    <h4 class="text-primary">${p["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h4>
-                    <p>${p["description" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p><strong>Sana: </strong> ${formattedDate} ${formattedTime}</p>
+                    <a href="single.html?PostId=${p.id}">
+                        <h4 class="text-primary">${p["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h4>
+                        <p>${p["description" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
+                        <p><strong>Sana: </strong> ${formattedDate} ${formattedTime}</p>
+                    </a>
                 </div>
             </div>
             <hr>

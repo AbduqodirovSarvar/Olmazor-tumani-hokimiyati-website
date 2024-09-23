@@ -21,7 +21,7 @@ export function renderNewsSection(Data) {
     let row = document.getElementById("blog-section-news");
 
     for (let index = 0; index < news.length; index++) {
-        if (index === 3) {
+        if (index === 6) {
             break; // exit the loop when the index is 3
         }
 
