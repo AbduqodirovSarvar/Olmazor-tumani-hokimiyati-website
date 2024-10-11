@@ -1,6 +1,8 @@
 import { baseFileUrl } from './data.js';
 import { getCurrentLanguage } from './translation.js';
 
+const pageSize = 10; // Number of items per page
+
 export function renderSingleHTML(data) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -36,11 +38,15 @@ export function renderSingleHTML(data) {
     }
 }
 
-function renderEmployees(Data, categoryId) {
+function renderEmployees(Data, categoryId, page = 1) {
     let employees = Data.employees.filter(e => e.category.id == categoryId);
+    const totalPages = Math.ceil(employees.length / pageSize);
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    const currentEmployees = employees.slice(start, end);
 
-    if (employees.length === 0) {
-        console.error(`No employees found for category ID ${categoryId}.`);
+    if (currentEmployees.length === 0) {
+        console.error(`No employees found for category ID ${categoryId} on page ${page}.`);
         return;
     }
 
@@ -52,12 +58,15 @@ function renderEmployees(Data, categoryId) {
         return;
     }
 
+    // Clear container before rendering
+    container.innerHTML = '';
+
     const h2 = document.createElement("h2");
     h2.classList.add("mt-4", "mb-5");
-    h2.textContent = employees[0].category["name" + currentLanguage];
+    h2.textContent = currentEmployees.length ? currentEmployees[0].category["name" + currentLanguage] : '';
     container.appendChild(h2);
 
-    employees.forEach(employee => {
+    currentEmployees.forEach(employee => {
         let firstName, lastName;
         switch (currentLanguage) {
             case "Ru":
@@ -97,7 +106,7 @@ function renderEmployees(Data, categoryId) {
                     <h4>${employee["position" + currentLanguage]}</h4>
                     <h4 class="text-primary">${firstName} ${lastName}</h4>
                     <p><strong>Ish joyi : </strong> ${employee["workPlace" + currentLanguage]}</p>
-                    <p><strong>Телефон :</strong> ${employee.phone1 ?? employee.phone2} ${employee.phone1 ?? employee.phone1}</p>
+                    <p><strong>Телефон :</strong> ${employee.phone1 ?? employee.phone2}</p>
                     <p><strong>Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
                     <p><strong>Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
                     <p><strong>Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
@@ -108,92 +117,21 @@ function renderEmployees(Data, categoryId) {
 
         container.insertAdjacentHTML('beforeend', memberHTML);
     });
-}
 
-function renderEmployee(Data, employeeId) {
-    let employees = Data.employees.filter(e => e.id == employeeId);
-
-    if (employees.length === 0) {
-        console.error(`No employee found with ID ${employeeId}.`);
-        return;
-    }
-
-    const currentLanguage = getCurrentLanguage();
-    const container = document.getElementById("single-html-container");
-
-    if (!container) {
-        console.error("Container with ID 'single-html-container' not found.");
-        return;
-    }
-
-    const h2 = document.createElement("h2");
-    h2.classList.add("mt-4", "mb-5");
-    h2.textContent = employees[0].category["name" + currentLanguage];
-    container.appendChild(h2);
-
-    employees.forEach(employee => {
-        let firstName, lastName;
-        switch (currentLanguage) {
-            case "Ru":
-            case "UzRu":
-                firstName = employee.firstnameRu;
-                lastName = employee.lastnameRu;
-                break;
-            default:
-                firstName = employee.firstnameEn;
-                lastName = employee.lastnameEn;
-                break;
-        }
-
-        let createdAtDate = new Date(employee.birthday);
-        let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-        });
-
-        const memberHTML = `
-            <div class="row mb-0">
-                <div class="col-md-3 team-member">
-                    <figure>
-                        <ul class="social">
-                            <li><a href="#"><span class="icon-facebook"></span></a></li>
-                            <li><a href="#"><span class="icon-twitter"></span></a></li>
-                            <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                            <li><a href="#"><span class="icon-instagram"></span></a></li>
-                            <li><a href="#"><span class="icon-telegram"></span></a></li>
-                            <li><a href="mailto:${employee.email}"><span class="icon-mail_outline"></span></a></li>
-                        </ul>
-                        <img src="${baseFileUrl}/${employee.photo}" alt="img" class="img-fluid">
-                    </figure>
-                </div>
-                <div class="col-md-9">
-                    <h4>${employee["position" + currentLanguage]}</h4>
-                    <h4 class="text-primary">${firstName} ${lastName}</h4>
-                    <p><strong>Ish joyi : </strong> ${employee["workPlace" + currentLanguage]}</p>
-                    <p><strong>Телефон :</strong> ${employee.phone1 ?? employee.phone2} ${employee.phone1 ?? employee.phone1}</p>
-                    <p><strong>Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
-                    <p><strong>Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
-                    <p><strong>Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
-                </div>
-            </div>
-            <hr>
-        `;
-
-        container.insertAdjacentHTML('beforeend', memberHTML);
+    renderPagination(container, totalPages, page, (newPage) => {
+        renderEmployees(Data, categoryId, newPage);
     });
 }
 
-function renderPosts(Data, categoryId) {
+function renderPosts(Data, categoryId, page = 1) {
     let posts = Data.posts.filter(e => e.category.id == categoryId);
+    const totalPages = Math.ceil(posts.length / pageSize);
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    const currentPosts = posts.slice(start, end);
 
-    if (posts.length < 2) {
-        renderPost(Data, posts[0].id);
-        return;
-    }
-
-    if (posts.length === 0) {
-        console.error(`No posts found for category ID ${categoryId}.`);
+    if (currentPosts.length < 1) {
+        console.error(`No posts found for category ID ${categoryId} on page ${page}.`);
         return;
     }
 
@@ -205,12 +143,15 @@ function renderPosts(Data, categoryId) {
         return;
     }
 
+    // Clear container before rendering
+    container.innerHTML = '';
+
     const h2 = document.createElement("h2");
     h2.classList.add("mt-4", "mb-5");
-    h2.textContent = posts[0].category["name" + currentLanguage];
+    h2.textContent = currentPosts.length ? currentPosts[0].category["name" + currentLanguage] : '';
     container.appendChild(h2);
 
-    posts.forEach(p => {
+    currentPosts.forEach(p => {
         let createdAtDate = new Date(p.createdAt);
         let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
             day: '2-digit',
@@ -243,64 +184,21 @@ function renderPosts(Data, categoryId) {
         `;
         container.insertAdjacentHTML('beforeend', htmlContent);
     });
-}
 
-function renderPost(Data, postId) {
-    let post = Data.posts.filter(p => p.id == postId);
-
-    if (post.length === 0) {
-        console.error(`No post found with ID ${postId}.`);
-        return;
-    }
-
-    const currentLanguage = getCurrentLanguage();
-    const container = document.getElementById("single-html-container");
-
-    if (!container) {
-        console.error("Container with ID 'single-html-container' not found.");
-        return;
-    }
-
-    const h2 = document.createElement("h2");
-    h2.classList.add("mt-4", "mb-5");
-    h2.textContent = post[0].category["name" + currentLanguage];
-    container.appendChild(h2);
-
-    post.forEach(p => {
-        let createdAtDate = new Date(p.createdAt);
-        let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-        });
-
-        let formattedTime = createdAtDate.toLocaleTimeString("en-GB", {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false // Use 24-hour format
-        });
-
-        let htmlContent = `
-            <div class="mb-3">
-                <div class="mt-3 mb-4 single-post-img">
-                    <img src="${baseFileUrl}/${p.photo}" alt="Photo">
-                </div>
-                <div class="col-md-12">
-                    <h4 class="text-primary">${p["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h4>
-                    <p>${p["description" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p><strong>Sana: </strong> ${formattedDate} ${formattedTime}</p>
-                </div>
-            </div>
-        `;
-        container.insertAdjacentHTML('beforeend', htmlContent);
+    renderPagination(container, totalPages, page, (newPage) => {
+        renderPosts(Data, categoryId, newPage);
     });
 }
 
-function renderSectors(Data) {
+function renderSectors(Data, page = 1) {
     let sectors = Data.sectors;
+    const totalPages = Math.ceil(sectors.length / pageSize);
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    const currentSectors = sectors.slice(start, end);
 
-    if (sectors.length === 0) {
-        console.error("No sectors found.");
+    if (currentSectors.length === 0) {
+        console.error(`No sectors found on page ${page}.`);
         return;
     }
 
@@ -311,13 +209,16 @@ function renderSectors(Data) {
         console.error("Container with ID 'single-html-container' not found.");
         return;
     }
+
+    // Clear container before rendering
+    container.innerHTML = '';
 
     const h2 = document.createElement("h2");
     h2.classList.add("mt-4", "mb-5");
     h2.textContent = "Sectors";
     container.appendChild(h2);
 
-    sectors.forEach(p => {
+    currentSectors.forEach(p => {
         let firstName, lastName;
         switch (currentLanguage) {
             case "Ru":
@@ -333,15 +234,39 @@ function renderSectors(Data) {
 
         let htmlContent = `
             <div class="row mb-12">
-                <div class="col-md-12">
-                    <h3 class="text-primary">${p["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h3>
-                    <h5><strong>Rahbari: </strong>${firstName} ${lastName}</h5>
-                    <p><strong>Address: </strong> ${p.location["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p>${p["description" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
+                <div class="col-md-3">
+                    <img src="${baseFileUrl}/${p.photo}" alt="Photo" class="img-fluid">
+                </div>
+                <div class="col-md-9">
+                    <h4 class="text-primary">${p["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h4>
+                    <p><strong>Employee: </strong> ${firstName} ${lastName}</p>
                 </div>
             </div>
             <hr>
         `;
         container.insertAdjacentHTML('beforeend', htmlContent);
     });
+
+    renderPagination(container, totalPages, page, (newPage) => {
+        renderSectors(Data, newPage);
+    });
+}
+
+function renderPagination(container, totalPages, currentPage, onPageChange) {
+    const paginationContainer = document.createElement('div');
+    paginationContainer.classList.add('pagination');
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.textContent = i;
+        pageLink.href = '#'; // Prevent default link behavior
+        pageLink.classList.add(currentPage === i ? 'active' : '');
+        pageLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            onPageChange(i);
+        });
+        paginationContainer.appendChild(pageLink);
+    }
+
+    container.appendChild(paginationContainer);
 }
