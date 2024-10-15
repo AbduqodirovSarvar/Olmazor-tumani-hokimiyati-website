@@ -15,7 +15,7 @@ export function renderTeamMembers(Data, categories) {
     const buttonDiv = document.createElement('div');
     buttonDiv.className = "text-center";
     
-    buttonDiv.insertAdjacentHTML("beforeend", `<p><a href="single.html?EmployeeCategorId=active" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+    buttonDiv.insertAdjacentHTML("beforeend", `<p><a href="single.html?EmployeeCategorId=active" class="btn btn-primary mr-2 mb-2" data-i18n="button.learn_more">Learn More</a></p>`);
 
     teamSection.appendChild(buttonDiv);
 
@@ -70,7 +70,7 @@ export function renderTeamMembers(Data, categories) {
                 </figure>
                 <h3>${firstName} ${lastName}</h3>
                   <span class="position">Position: ${employee["position"+ currentLanguage].replace(/\n+/g, '<br>').replace(/\\"/g, '"')}</span>
-                <p><a href="single.html?EmployeeId=${employee.id}">Learn More</a></p>
+                <p><a href="single.html?EmployeeId=${employee.id}" data-i18n="button.view_all">Learn More</a></p>
               </div>
             </div>
         `;

@@ -14,7 +14,7 @@ export function renderInvestment(Data) {
 
     let button = document.createElement("div");
     button.className = "text-center";
-    button.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${investments[0].category.id}" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+    button.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${investments[0].category.id}" class="btn btn-primary mr-2 mb-2" data-i18n="button.learn_more">Learn More</a></p>`);
     investmentSection.appendChild(button);
 
     let investmentRow = investmentSection.querySelector(".row.align-items-stretch");
@@ -39,7 +39,7 @@ export function renderInvestment(Data) {
                 <div>
                     <h3>${investment.nameEn.replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h3>
                     <p>${shortDescription}</p>
-                    <p><a href="single.html?PostId=${investment.id}">Learn More</a></p>
+                    <p><a href="single.html?PostId=${investment.id}" data-i18n="button.learn_more">Learn More</a></p>
                 </div>
             </div>
         </div>

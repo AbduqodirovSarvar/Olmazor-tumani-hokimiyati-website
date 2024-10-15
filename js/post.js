@@ -50,7 +50,7 @@ export function renderPostSection(Data, categories) {
             </a>
             <h3>${name}</h3> <!-- Updated to use name with <br> -->
             <p>${shortDescription}</p> <!-- Updated to use description with <br> -->
-            <p><a href="single.html?PostId=${post.id}">Learn More</a></p>
+            <p><a href="single.html?PostId=${post.id}" data-i18n="button.learn_more">Learn More</a></p>
         </div>
         `;
 

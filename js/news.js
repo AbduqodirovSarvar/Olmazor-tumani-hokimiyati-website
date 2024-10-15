@@ -15,7 +15,7 @@ export function renderNewsSection(Data) {
 
     let button = document.createElement("div");
     button.className = "text-center";
-    button.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${news[0].category.id}" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+    button.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${news[0].category.id}" class="btn btn-primary mr-2 mb-2" data-i18n="button.learn_more">Learn More</a></p>`);
     newsSection.appendChild(button);
 
     let row = document.getElementById("blog-section-news");
@@ -54,7 +54,7 @@ export function renderNewsSection(Data) {
                 <h2 class="font-size-regular"><a href="#">${name}</a></h2>
                 <div class="meta mb-4">Olmazor tumani axborot xizmati <span class="mx-2">&bullet;</span>${formattedDate}<span class="mx-2">&bullet;</span></div>
                 <p>${shortDescription}</p>
-                <p><a href="single.html?PostId=${element.id}">Continue Reading...</a></p>
+                <p><a href="single.html?PostId=${element.id}" data-i18n="button.view_all">Continue Reading...</a></p>
             </div> 
         </div>
         `;

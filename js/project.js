@@ -21,7 +21,7 @@ export function renderProjectSection(Data) {
     const buttonDiv = document.createElement('div');
     buttonDiv.className = "text-center";
     
-    buttonDiv.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${projects[0].category.id}" class="btn btn-primary mr-2 mb-2">Learn More</a></p>`);
+    buttonDiv.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${projects[0].category.id}" class="btn btn-primary mr-2 mb-2" data-i18n="button.learn_more">Learn More</a></p>`);
 
     projectSection.appendChild(buttonDiv);
 
@@ -50,7 +50,7 @@ export function renderProjectSection(Data) {
             <div>
                 <h2 class="section-title mb-3">${name}</h2>
                 <p>${shortDescription}</p>
-                <p><a href="single.html?PostId=${project.id}">Learn More</a></p>
+                <p><a href="single.html?PostId=${project.id}" data-i18n="button.learn_more">Learn More</a></p>
             </div>
         `;
         textElement.insertAdjacentHTML('beforeend', projectTextHTML);
