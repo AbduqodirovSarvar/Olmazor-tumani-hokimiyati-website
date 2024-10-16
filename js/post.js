@@ -25,7 +25,7 @@ export function renderPostSection(Data, categories) {
             localStorage.setItem("currentPostCategorId", category.id);
         }
         button.setAttribute("post-data-filter", `.${category.id}`);
-        button.textContent = category["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
+        button.textContent = category["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
         button.addEventListener("click", () => filterPosts(category.id));
         
         // Append the button to the filters div
@@ -38,9 +38,9 @@ export function renderPostSection(Data, categories) {
         shortDescription = shortDescription.length > 100 
             ? shortDescription.substring(0, 100) + "..."
             : shortDescription;
-        shortDescription = shortDescription.replace(/\\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
+        shortDescription = shortDescription.replace(/\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
 
-        let name = post["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
+        let name = post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
 
         const postHTML = `
         <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 category-${post.category.id}">

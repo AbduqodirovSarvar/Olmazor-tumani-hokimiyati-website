@@ -54,6 +54,7 @@
     "events": "События",
     "latest_news": "Последние новости",
     "contact_us": "Свяжитесь с нами",
+    "reception_date": "Приемные дни",
     "contact_form": {
         "title": "Отправить заявку",
         "first_name": "Имя",

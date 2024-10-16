@@ -30,14 +30,14 @@ export function renderInvestment(Data) {
             : shortDescription;
 
         // Replace new lines with <br> tags
-        shortDescription = shortDescription.replace(/\\n/g, '<br>').replace(/\\"/g, '"');
+        shortDescription = shortDescription.replace(/\n/g, '<br>').replace(/\\"/g, '"');
 
         let investmentHTML = `
         <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
             <div class="unit-4">
                 <img class="img-fluid" src="${baseFileUrl}/${investment.photo}" alt="img">
                 <div>
-                    <h3>${investment.nameEn.replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h3>
+                    <h3>${investment.nameEn.replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h3>
                     <p>${shortDescription}</p>
                     <p><a href="single.html?PostId=${investment.id}" data-i18n="button.learn_more">Learn More</a></p>
                 </div>

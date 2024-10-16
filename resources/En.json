@@ -54,6 +54,7 @@
     "events": "Events",
     "latest_news": "Latest News",
     "contact_us": "Contact Us",
+    "reception_date": "Reception days",
     "contact_form": {
         "title": "Submit your application",
         "first_name": "First Name",

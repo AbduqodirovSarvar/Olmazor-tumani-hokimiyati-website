@@ -32,9 +32,9 @@ export function renderNewsSection(Data) {
         shortDescription = shortDescription.length > 100 
             ? shortDescription.substring(0, 100) + "..."
             : shortDescription;
-        shortDescription = shortDescription.replace(/\\n/g, '<br>').replace(/\\"/g, '"');
+        shortDescription = shortDescription.replace(/\n/g, '<br>').replace(/\\"/g, '"');
 
-        let name = element["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"');
+        let name = element["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"');
 
         let createdAtDate = new Date(element.createdAt);
         let formattedDate = createdAtDate.toLocaleDateString("en-GB", {

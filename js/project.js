@@ -38,12 +38,12 @@ export function renderProjectSection(Data) {
         imgElement.insertAdjacentHTML('beforeend', projectImgHTML);
 
         // Handle description and name to replace \n with <br>
-        let shortDescription = project["description" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"');
+        let shortDescription = project["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"');
         shortDescription = shortDescription.length > 150 
             ? shortDescription.substring(0, 150) + "..."
             : shortDescription;
 
-        let name = project["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"');
+        let name = project["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"');
 
         // Handle text
         let projectTextHTML = `
