@@ -39,7 +39,7 @@ export function renderInvestment(Data) {
                 <div>
                     <h3>${investment.nameEn.replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h3>
                     <p>${shortDescription}</p>
-                    <p><a href="single.html?PostId=${investment.id}" data-i18n="button.learn_more">Learn More</a></p>
+                    <p><a href="single.html?PostId=${investment.id}" data-i18n="button.read_more">Learn More</a></p>
                 </div>
             </div>
         </div>

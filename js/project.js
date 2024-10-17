@@ -50,7 +50,7 @@ export function renderProjectSection(Data) {
             <div>
                 <h2 class="section-title mb-3">${name}</h2>
                 <p>${shortDescription}</p>
-                <p><a href="single.html?PostId=${project.id}" data-i18n="button.learn_more">Learn More</a></p>
+                <p><a href="single.html?PostId=${project.id}" data-i18n="button.read_more">Learn More</a></p>
             </div>
         `;
         textElement.insertAdjacentHTML('beforeend', projectTextHTML);

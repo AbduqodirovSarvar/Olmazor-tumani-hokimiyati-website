@@ -32,11 +32,11 @@ export function useTranslate(translations){
         }
     });
 
-    // const messageTextarea = document.querySelector('#message');
-    // messageTextarea.placeholder = translations['contact_form']['message_placeholder'];
+    const messageTextarea = document.querySelector('#message');
+    messageTextarea.placeholder = translations['contact_form']['message_placeholder'];
 
-    // const submitButton = document.querySelector('#submitButton');
-    // submitButton.value = translations['contact_form']['submit'];
+    const submitButton = document.querySelector('#submitButton');
+    submitButton.value = translations['contact_form']['submit'];
 }
 
 export function getCurrentLanguage(){

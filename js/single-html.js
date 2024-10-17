@@ -111,11 +111,11 @@ function renderEmployees(Data, categoryId, page = 1) {
                 <div class="col-md-9">
                     <h4>${employee["position" + currentLanguage]}</h4>
                     <h4 class="text-primary">${firstName} ${lastName}</h4>
-                    <p><strong>Ish joyi : </strong> ${employee["workPlace" + currentLanguage]}</p>
-                    <p><strong>Телефон :</strong> ${employee.phone1 ?? employee.phone2}</p>
-                    <p><strong>Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
-                    <p><strong>Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
-                    <p><strong>Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
+                    <p><strong data-i18n="work_place">Ish joyi : </strong> ${employee["workPlace" + currentLanguage]}</p>
+                    <p><strong data-i18n="">Телефон :</strong> ${employee.phone1 ?? employee.phone2}</p>
+                    <p><strong data-i18n="single_page.nationality">Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
+                    <p><strong data-i18n="birthday_place">Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
+                    <p><strong data-i18n="receptions">Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
                 </div>
             </div>
             <hr>
@@ -187,13 +187,13 @@ function renderEmployee(Data, employeeId) {
                     </figure>
                 </div>
                 <div class="col-md-9">
-                    <h4>${employee["position" + currentLanguage]}</h4>
+                    <h4><strong data-i18n="single_page.position">Position : </strong>${employee["position" + currentLanguage]}</h4>
                     <h4 class="text-primary">${firstName} ${lastName}</h4>
-                    <p><strong>Ish joyi : </strong> ${employee["workPlace" + currentLanguage]}</p>
-                    <p><strong>Телефон :</strong> ${employee.phone1 ?? employee.phone2} ${employee.phone1 ?? employee.phone1}</p>
-                    <p><strong>Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
-                    <p><strong>Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
-                    <p><strong>Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
+                    <p><strong data-i18n="single_page.work_place">Ish joyi : </strong> ${employee["workPlace" + currentLanguage]}</p>
+                    <p><strong data-i18n="single_page.phone_number">Телефон :</strong> ${employee.phone1 ?? employee.phone2} ${employee.phone1 ?? employee.phone1}</p>
+                    <p><strong data-i18n="single_page.nationality">Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
+                    <p><strong data-i18n="single_page.birthday_place">Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
+                    <p><strong data-i18n="single_page.receptions">Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
                 </div>
             </div>
             <hr>
@@ -257,7 +257,7 @@ function renderPosts(Data, categoryId, page = 1) {
                         <h4 class="text-primary">${p["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h4>
                     </a>
                     <p>${p["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p><strong>Sana: </strong> ${formattedDate} ${formattedTime}</p>
+                    <p><strong data-i18n="single_page.date">Sana: </strong> ${formattedDate} ${formattedTime}</p>
                 </div>
             </div>
             <hr>
@@ -313,7 +313,7 @@ function renderPost(Data, postId) {
                 <div class="col-md-12">
                     <h4 class="text-primary">${p["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h4>
                     <p>${p["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p><strong>Sana: </strong> ${formattedDate} ${formattedTime}</p>
+                    <p><strong data-i18n="single_page.date">Sana: </strong> ${formattedDate} ${formattedTime}</p>
                 </div>
             </div>
         `;
@@ -370,7 +370,7 @@ function renderSectors(Data, page = 1) {
                 </div>
                 <div class="col-md-9">
                     <h4 class="text-primary">${p["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h4>
-                    <p><strong>Employee: </strong> ${firstName} ${lastName}</p>
+                    <p><strong >Employee: </strong> ${firstName} ${lastName}</p>
                 </div>
             </div>
             <hr>

@@ -73,9 +73,11 @@
         "receptions": "Reception of citizens : ",
         "nationality": "Nationality : ",
         "position": "Position : ",
-        "date": "Date",
+        "date": "Date: ",
         "leader": "Leader : ",
-        "address": "Address : "
+        "address": "Address : ",
+        "phone_number": "Phone Number : ",
+        "sector_head": "The head of the sector : "
       },
     "footer":{
         "usefull_links": "Usefull Links",

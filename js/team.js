@@ -69,8 +69,8 @@ export function renderTeamMembers(Data, categories) {
                   <img src="${baseFileUrl}/${employee.photo}" alt="${employee.firstnameEn} ${employee.lastnameEn}" class="img-fluid">
                 </figure>
                 <h3>${firstName} ${lastName}</h3>
-                  <span class="position">Position: ${employee["position"+ currentLanguage].replace(/\n+/g, '<br>').replace(/\\"/g, '"')}</span>
-                <p><a href="single.html?EmployeeId=${employee.id}" data-i18n="button.view_all">Learn More</a></p>
+                  <span class="position"><strong data-i18n="single_page.position">Position: </strong>${employee["position"+ currentLanguage].replace(/\n+/g, '<br>').replace(/\\"/g, '"')}</span>
+                <p><a href="single.html?EmployeeId=${employee.id}" data-i18n="button.read_more">Learn More</a></p>
               </div>
             </div>
         `;

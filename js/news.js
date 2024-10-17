@@ -54,7 +54,7 @@ export function renderNewsSection(Data) {
                 <h2 class="font-size-regular"><a href="#">${name}</a></h2>
                 <div class="meta mb-4">Olmazor tumani axborot xizmati <span class="mx-2">&bullet;</span>${formattedDate}<span class="mx-2">&bullet;</span></div>
                 <p>${shortDescription}</p>
-                <p><a href="single.html?PostId=${element.id}" data-i18n="button.view_all">Continue Reading...</a></p>
+                <p><a href="single.html?PostId=${element.id}" data-i18n="button.read_more">Continue Reading...</a></p>
             </div> 
         </div>
         `;
