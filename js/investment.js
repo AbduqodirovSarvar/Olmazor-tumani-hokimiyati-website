@@ -35,7 +35,7 @@ export function renderInvestment(Data) {
         let investmentHTML = `
         <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
             <div class="unit-4">
-                <img class="img-fluid" src="${baseFileUrl}/${investment.photo}" alt="img">
+                <img class="img-fluid post-img" src="${baseFileUrl}/${investment.photo}" alt="img">
                 <div>
                     <h3>${investment.nameEn.replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h3>
                     <p>${shortDescription}</p>

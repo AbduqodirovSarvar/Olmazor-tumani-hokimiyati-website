@@ -66,7 +66,7 @@ export function renderTeamMembers(Data, categories) {
                     <li><a href="#"><span class="icon-telegram"></span></a></li>
                     <li><a href="mailto:${employee.email}"><span class="icon-mail_outline"></span></a></li>
                   </ul>
-                  <img src="${baseFileUrl}/${employee.photo}" alt="${employee.firstnameEn} ${employee.lastnameEn}" class="img-fluid">
+                  <img src="${baseFileUrl}/${employee.photo}" alt="${employee.firstnameEn} ${employee.lastnameEn}" class="img-fluid employee-img">
                 </figure>
                 <h3>${firstName} ${lastName}</h3>
                   <span class="position"><strong data-i18n="single_page.position">Position: </strong>${employee["position"+ currentLanguage].replace(/\n+/g, '<br>').replace(/\\"/g, '"')}</span>

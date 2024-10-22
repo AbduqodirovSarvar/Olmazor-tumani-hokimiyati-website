@@ -46,7 +46,7 @@ export function renderPostSection(Data, categories) {
         <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 category-${post.category.id}">
             <a href="${baseFileUrl}/${post.photo}" class="item-wrap fancybox mb-2" data-fancybox="gallery2">
               <span class="icon-search2"></span>
-              <img class="img-fluid" src="${baseFileUrl}/${post.photo}">
+              <img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">
             </a>
             <h3>${name}</h3> <!-- Updated to use name with <br> -->
             <p>${shortDescription}</p> <!-- Updated to use description with <br> -->

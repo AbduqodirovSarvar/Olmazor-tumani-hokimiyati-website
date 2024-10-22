@@ -514,6 +514,16 @@ mark {
     height: auto
 }
 
+.employee-img{
+    width: 300px !important;
+    height: 350px !important;
+}
+
+.post-img{
+    width: 350px;
+    height: 300px;
+}
+
 .img-thumbnail {
     padding: 0.25rem;
     background-color: #fff;

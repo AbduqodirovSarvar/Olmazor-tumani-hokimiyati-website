@@ -8,7 +8,7 @@ export function renderSingleHTML(data) {
     const urlParams = new URLSearchParams(queryString);
 
     const history = urlParams.get('history');
-    if(history) {
+    if (history) {
         renderHistory(data);
         return;
     }
@@ -105,7 +105,7 @@ function renderEmployees(Data, categoryId, page = 1) {
                             <li><a href="#"><span class="icon-telegram"></span></a></li>
                             <li><a href="mailto:${employee.email}"><span class="icon-mail_outline"></span></a></li>
                         </ul>
-                        <img src="${baseFileUrl}/${employee.photo}" alt="img" class="img-fluid">
+                        <img src="${baseFileUrl}/${employee.photo}" alt="img" class="img-fluid employee-img">
                     </figure>
                 </div>
                 <div class="col-md-9">
@@ -183,7 +183,7 @@ function renderEmployee(Data, employeeId) {
                             <li><a href="#"><span class="icon-telegram"></span></a></li>
                             <li><a href="mailto:${employee.email}"><span class="icon-mail_outline"></span></a></li>
                         </ul>
-                        <img src="${baseFileUrl}/${employee.photo}" alt="img" class="img-fluid">
+                        <img src="${baseFileUrl}/${employee.photo}" alt="img" class="img-fluid employee-img">
                     </figure>
                 </div>
                 <div class="col-md-9">
@@ -223,46 +223,32 @@ function renderPosts(Data, categoryId, page = 1) {
         return;
     }
 
-    // Clear container before rendering
     container.innerHTML = '';
 
-    const h2 = document.createElement("h2");
-    h2.classList.add("mt-4", "mb-5");
-    h2.textContent = currentPosts.length ? currentPosts[0].category["name" + currentLanguage] : '';
-    container.appendChild(h2);
-
-    currentPosts.forEach(p => {
-        let createdAtDate = new Date(p.createdAt);
+    currentPosts.forEach(post => {
+        let createdAtDate = new Date(post.createdAt);
         let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
             day: '2-digit',
             month: '2-digit',
             year: 'numeric'
         });
 
-        let formattedTime = createdAtDate.toLocaleTimeString("en-GB", {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false // Use 24-hour format
-        });
-
-        let htmlContent = `
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <a href="single.html?PostId=${p.id}">
-                        <img src="${baseFileUrl}/${p.photo}" alt="Photo" class="img-fluid">
+        const postHTML = `
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="service-2 h-100">
+                    <a href="single.html?PostId=${post.id}" class="d-block">
+                        <div class="img-wrap">
+                            <img src="${baseFileUrl}/${post.photo}" alt="Image" class="img-fluid">
+                        </div>
+                        <div class="p-3">
+                            <h3 class="text-primary">${post["title" + currentLanguage]}</h3>
+                            <p class="mb-0">${formattedDate}</p>
+                        </div>
                     </a>
-                </div>
-                <div class="col-md-9">
-                    <a href="single.html?PostId=${p.id}">
-                        <h4 class="text-primary">${p["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h4>
-                    </a>
-                    <p>${p["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p><strong data-i18n="single_page.date">Sana: </strong> ${formattedDate} ${formattedTime}</p>
                 </div>
             </div>
-            <hr>
         `;
-        container.insertAdjacentHTML('beforeend', htmlContent);
+        container.insertAdjacentHTML('beforeend', postHTML);
     });
 
     renderPagination(container, totalPages, page, (newPage) => {
@@ -270,150 +256,103 @@ function renderPosts(Data, categoryId, page = 1) {
     });
 }
 
-function renderPost(Data, postId) {
-    let post = Data.posts.filter(p => p.id == postId);
+// function renderPagination(container, totalPages, currentPage, onPageChange) {
+//     const paginationWrapper = document.createElement('div');
+//     paginationWrapper.className = 'pagination-wrapper';
+//     const pagination = document.createElement('ul');
+//     pagination.className = 'pagination';
 
-    if (post.length === 0) {
-        console.error(`No post found with ID ${postId}.`);
-        return;
-    }
+//     for (let i = 1; i <= totalPages; i++) {
+//         const pageItem = document.createElement('li');
+//         pageItem.className = 'page-item';
+//         if (i === currentPage) {
+//             pageItem.classList.add('active');
+//         }
 
-    const currentLanguage = getCurrentLanguage();
-    const container = document.getElementById("single-html-container");
+//         const pageLink = document.createElement('a');
+//         pageLink.className = 'page-link';
+//         pageLink.href = '#';
+//         pageLink.textContent = i;
 
-    if (!container) {
-        console.error("Container with ID 'single-html-container' not found.");
-        return;
-    }
+//         pageLink.addEventListener('click', (event) => {
+//             event.preventDefault();
+//             onPageChange(i);
+//         });
 
-    const h2 = document.createElement("h2");
-    h2.classList.add("mt-4", "mb-5");
-    h2.textContent = post[0].category["name" + currentLanguage];
-    container.appendChild(h2);
+//         pageItem.appendChild(pageLink);
+//         pagination.appendChild(pageItem);
+//     }
 
-    post.forEach(p => {
-        let createdAtDate = new Date(p.createdAt);
-        let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-        });
-
-        let formattedTime = createdAtDate.toLocaleTimeString("en-GB", {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false // Use 24-hour format
-        });
-
-        let htmlContent = `
-            <div class="mb-3">
-                <div class="mt-3 mb-4 single-post-img">
-                    <img src="${baseFileUrl}/${p.photo}" alt="Photo">
-                </div>
-                <div class="col-md-12">
-                    <h4 class="text-primary">${p["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h4>
-                    <p>${p["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p><strong data-i18n="single_page.date">Sana: </strong> ${formattedDate} ${formattedTime}</p>
-                </div>
-            </div>
-        `;
-        container.insertAdjacentHTML('beforeend', htmlContent);
-    });
-}
-
-function renderSectors(Data, page = 1) {
-    let sectors = Data.sectors;
-    const totalPages = Math.ceil(sectors.length / pageSize);
-    const start = (page - 1) * pageSize;
-    const end = start + pageSize;
-    const currentSectors = sectors.slice(start, end);
-
-    if (currentSectors.length === 0) {
-        console.error(`No sectors found on page ${page}.`);
-        return;
-    }
-
-    const currentLanguage = getCurrentLanguage();
-    const container = document.getElementById("single-html-container");
-
-    if (!container) {
-        console.error("Container with ID 'single-html-container' not found.");
-        return;
-    }
-
-    // Clear container before rendering
-    container.innerHTML = '';
-
-    const h2 = document.createElement("h2");
-    h2.classList.add("mt-4", "mb-5");
-    h2.textContent = "Sectors";
-    container.appendChild(h2);
-
-    currentSectors.forEach(p => {
-        let firstName, lastName;
-        switch (currentLanguage) {
-            case "Ru":
-            case "UzRu":
-                firstName = p.employee.firstnameRu;
-                lastName = p.employee.lastnameRu;
-                break;
-            default:
-                firstName = p.employee.firstnameEn;
-                lastName = p.employee.lastnameEn;
-                break;
-        }
-
-        let htmlContent = `
-            <div class="row mb-12">
-                <div class="col-md-3">
-                    <img src="${baseFileUrl}/${p.photo}" alt="Photo" class="img-fluid">
-                </div>
-                <div class="col-md-9">
-                    <h4 class="text-primary">${p["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h4>
-                    <p><strong >Employee: </strong> ${firstName} ${lastName}</p>
-                </div>
-            </div>
-            <hr>
-        `;
-        container.insertAdjacentHTML('beforeend', htmlContent);
-    });
-
-    renderPagination(container, totalPages, page, (newPage) => {
-        renderSectors(Data, newPage);
-    });
-}
+//     paginationWrapper.appendChild(pagination);
+//     container.appendChild(paginationWrapper);
+// }
 
 function renderPagination(container, totalPages, currentPage, onPageChange) {
-    const paginationContainer = document.createElement('div');
-    paginationContainer.classList.add('pagination');
+    const paginationWrapper = document.createElement('div');
+    paginationWrapper.className = 'pagination-wrapper d-flex justify-content-center mt-4'; // Centering the pagination
+    const pagination = document.createElement('ul');
+    pagination.className = 'pagination';
 
+    // "Previous" button
+    const prevItem = document.createElement('li');
+    prevItem.className = 'page-item';
+    if (currentPage === 1) {
+        prevItem.classList.add('disabled'); // Disable the "Previous" button if on the first page
+    }
+    const prevLink = document.createElement('a');
+    prevLink.className = 'page-link';
+    prevLink.href = '#';
+    prevLink.textContent = '<';
+    prevLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (currentPage > 1) {
+            onPageChange(currentPage - 1);
+        }
+    });
+    prevItem.appendChild(prevLink);
+    pagination.appendChild(prevItem);
+
+    // Page numbers
     for (let i = 1; i <= totalPages; i++) {
+        const pageItem = document.createElement('li');
+        pageItem.className = 'page-item';
+        if (i === currentPage) {
+            pageItem.classList.add('active');
+        }
+
         const pageLink = document.createElement('a');
+        pageLink.className = 'page-link';
+        pageLink.href = '#';
         pageLink.textContent = i;
-        pageLink.href = '#'; // Prevent default link behavior
-        pageLink.classList.add(currentPage === i ? 'active' : '');
-        pageLink.addEventListener('click', (e) => {
-            e.preventDefault();
+
+        pageLink.addEventListener('click', (event) => {
+            event.preventDefault();
             onPageChange(i);
         });
-        paginationContainer.appendChild(pageLink);
+
+        pageItem.appendChild(pageLink);
+        pagination.appendChild(pageItem);
     }
 
-    container.appendChild(paginationContainer);
-}
+    // "Next" button
+    const nextItem = document.createElement('li');
+    nextItem.className = 'page-item';
+    if (currentPage === totalPages) {
+        nextItem.classList.add('disabled'); // Disable the "Next" button if on the last page
+    }
+    const nextLink = document.createElement('a');
+    nextLink.className = 'page-link';
+    nextLink.href = '#';
+    nextLink.textContent = '>';
+    nextLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (currentPage < totalPages) {
+            onPageChange(currentPage + 1);
+        }
+    });
+    nextItem.appendChild(nextLink);
+    pagination.appendChild(nextItem);
 
-function renderHistory(Data){
-    let about = Data.about; 
-
-    let currentLanguage = getCurrentLanguage();
-    const container = document.getElementById("single-html-container");
-
-    const h2 = document.createElement("h2");
-    h2.classList.add("mt-4", "mb-5");
-    h2.textContent = "";
-    h2.setAttribute('data-i18n', 'header.selections.district_history');
-    container.appendChild(h2);
-
-    let htmlContent = about["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"');
-    container.insertAdjacentHTML('beforeend', htmlContent);
+    paginationWrapper.appendChild(pagination);
+    container.appendChild(paginationWrapper);
 }

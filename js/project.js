@@ -33,7 +33,7 @@ export function renderProjectSection(Data) {
     projects.forEach((project, index) => {
         // Handle image
         let projectImgHTML = `
-            <img src="${baseFileUrl}/${project.photo}" alt="Image" class="img-fluid">
+            <img src="${baseFileUrl}/${project.photo}" alt="Image" class="img-fluid post-img">
         `;
         imgElement.insertAdjacentHTML('beforeend', projectImgHTML);
 
