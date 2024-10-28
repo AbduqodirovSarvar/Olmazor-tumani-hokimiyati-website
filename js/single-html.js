@@ -111,11 +111,11 @@ function renderEmployees(Data, categoryId, page = 1) {
                 <div class="col-md-9">
                     <h4>${employee["position" + currentLanguage]}</h4>
                     <h4 class="text-primary">${firstName} ${lastName}</h4>
-                    <p><strong data-i18n="work_place">Ish joyi : </strong> ${employee["workPlace" + currentLanguage]}</p>
-                    <p><strong data-i18n="">Телефон :</strong> ${employee.phone1 ?? employee.phone2}</p>
+                    <p><strong data-i18n="single_page.work_place"></strong> ${employee["workPlace" + currentLanguage]}</p>
+                    <p><strong data-i18n="single_page.phone_number"></strong> ${employee.phone1 ?? employee.phone2}</p>
                     <p><strong data-i18n="single_page.nationality">Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
-                    <p><strong data-i18n="birthday_place">Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
-                    <p><strong data-i18n="receptions">Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
+                    <p><strong data-i18n="single_page.birthday_place">Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
+                    <p><strong data-i18n="single_page.receptions">Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
                 </div>
             </div>
             <hr>
@@ -241,7 +241,7 @@ function renderPosts(Data, categoryId, page = 1) {
                             <img src="${baseFileUrl}/${post.photo}" alt="Image" class="img-fluid">
                         </div>
                         <div class="p-3">
-                            <h3 class="text-primary">${post["title" + currentLanguage]}</h3>
+                            <h3 class="text-primary">${post["name" + currentLanguage]}</h3>
                             <p class="mb-0">${formattedDate}</p>
                         </div>
                     </a>
@@ -256,36 +256,117 @@ function renderPosts(Data, categoryId, page = 1) {
     });
 }
 
-// function renderPagination(container, totalPages, currentPage, onPageChange) {
-//     const paginationWrapper = document.createElement('div');
-//     paginationWrapper.className = 'pagination-wrapper';
-//     const pagination = document.createElement('ul');
-//     pagination.className = 'pagination';
+function renderPost(Data, postId) {
+    const post = Data.posts.find(e => e.id === postId);
+    console.log(post);
 
-//     for (let i = 1; i <= totalPages; i++) {
-//         const pageItem = document.createElement('li');
-//         pageItem.className = 'page-item';
-//         if (i === currentPage) {
-//             pageItem.classList.add('active');
-//         }
+    if (!post) {
+        console.error(`No post found with ID ${postId}.`);
+        return;
+    }
 
-//         const pageLink = document.createElement('a');
-//         pageLink.className = 'page-link';
-//         pageLink.href = '#';
-//         pageLink.textContent = i;
+    const currentLanguage = getCurrentLanguage();
+    const container = document.getElementById("single-html-container");
 
-//         pageLink.addEventListener('click', (event) => {
-//             event.preventDefault();
-//             onPageChange(i);
-//         });
+    if (!container) {
+        console.error("Container with ID 'single-html-container' not found.");
+        return;
+    }
 
-//         pageItem.appendChild(pageLink);
-//         pagination.appendChild(pageItem);
-//     }
+    container.innerHTML = ''; // Clear existing content
 
-//     paginationWrapper.appendChild(pagination);
-//     container.appendChild(paginationWrapper);
-// }
+    // Format post date
+    let createdAtDate = new Date(post.createdAt);
+    let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    });
+
+    // Render the post content
+    const postHTML = `
+        <div class="col-md-12 mb-4">
+            <div class="service-2 h-100">
+                <div class="img-wrap">
+                    <img src="${baseFileUrl}/${post.photo}" alt="Image" class="img-fluid">
+                </div>
+                <div class="p-3">
+                    <h2 class="text-primary">${post["name" + currentLanguage]}</h2>
+                    <p>${post["description" + currentLanguage]}</p>
+                    <p class="mb-4">${formattedDate}</p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    container.insertAdjacentHTML('beforeend', postHTML);
+}
+
+function renderSectors(Data) {
+    let sectors = Data.sectors;
+
+    if (sectors.length === 0) {
+        console.error("No sectors found.");
+        return;
+    }
+
+    const currentLanguage = getCurrentLanguage();
+    const container = document.getElementById("single-html-container");
+
+    if (!container) {
+        console.error("Container with ID 'single-html-container' not found.");
+        return;
+    }
+
+    const h2 = document.createElement("h2");
+    h2.classList.add("mt-4", "mb-5");
+    h2.textContent = "Sectors";
+    container.appendChild(h2);
+
+    sectors.forEach(p => {
+        let firstName, lastName;
+        switch (currentLanguage) {
+            case "Ru":
+            case "UzRu":
+                firstName = p.employee.firstnameRu;
+                lastName = p.employee.lastnameRu;
+                break;
+            default:
+                firstName = p.employee.firstnameEn;
+                lastName = p.employee.lastnameEn;
+                break;
+        }
+
+        let htmlContent = `
+            <div class="row mb-12">
+                <div class="col-md-12">
+                    <h3 class="text-primary">${p["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h3>
+                    <h5><strong>Rahbari: </strong>${firstName} ${lastName}</h5>
+                    <p><strong>Address: </strong> ${p.location["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
+                    <p>${p["description" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
+                </div>
+            </div>
+            <hr>
+        `;
+        container.insertAdjacentHTML('beforeend', htmlContent);
+    });
+}
+
+function renderHistory(Data){
+    let about = Data.about; 
+
+    let currentLanguage = getCurrentLanguage();
+    const container = document.getElementById("single-html-container");
+
+    const h2 = document.createElement("h2");
+    h2.classList.add("mt-4", "mb-5");
+    h2.textContent = "";
+    h2.setAttribute('data-i18n', 'header.selections.district_history');
+    container.appendChild(h2);
+
+    let htmlContent = about["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"');
+    container.insertAdjacentHTML('beforeend', htmlContent);
+}
 
 function renderPagination(container, totalPages, currentPage, onPageChange) {
     const paginationWrapper = document.createElement('div');

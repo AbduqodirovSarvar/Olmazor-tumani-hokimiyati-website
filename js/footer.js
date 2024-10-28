@@ -22,44 +22,62 @@ export function renderFooterSection(Data){
     setItems(Data);
 }
 
-export function setItems(data){
+export function setItems(data) {
     let address = document.querySelectorAll(".address");
     address.forEach(e => {
-        e.textContent = data.about.location["name" + getCurrentLanguage()];
-    })
+        const location = data.about.location["name" + getCurrentLanguage()];
+        e.textContent = location || "Location not available";
+    });
+
     let phone = document.querySelectorAll(".phone");
     phone.forEach(e => {
-        e.textContent = data.contacts.filter(c => c.type.id == 1)[0].value;
-        e.href = "tel:"+ data.contacts.filter(c => c.type.id == 1).value;
+        const contact = data.contacts.filter(c => c.type.id === 1)[0];
+        if (contact && contact.value) {
+            e.textContent = contact.value;
+            e.href = `tel:${contact.value}`;
+        } else {
+            e.textContent = "Phone not available";
+        }
     });
+
     let telegram = document.querySelectorAll('.telegram');
     telegram.forEach(a => {
-        a.href = data.contacts.filter(c => c.type.id == 3)[0].value;
+        const contact = data.contacts.filter(c => c.type.id === 3)[0];
+        a.href = contact?.value || "#";
     });
 
     let instagram = document.querySelectorAll('.instagram');
     instagram.forEach(a => {
-        a.href = data.contacts.filter(c => c.type.id == 4)[0].value;
+        const contact = data.contacts.filter(c => c.type.id === 4)[0];
+        a.href = contact?.value || "#";
     });
 
     let facebook = document.querySelectorAll('.facebook');
     facebook.forEach(a => {
-        a.href = data.contacts.filter(c => c.type.id == 5)[0].value;
+        const contact = data.contacts.filter(c => c.type.id === 5)[0];
+        a.href = contact?.value || "#";
     });
 
     let twitter = document.querySelectorAll('.twitter');
     twitter.forEach(a => {
-        a.href = data.contacts.filter(c => c.type.id == 7)[0].value;
+        const contact = data.contacts.filter(c => c.type.id === 7)[0];
+        a.href = contact?.value || "#";
     });
 
     let youtube = document.querySelectorAll('.youtube');
     youtube.forEach(a => {
-        a.href = data.contacts.filter(c => c.type.id == 6)[0].value;
+        const contact = data.contacts.filter(c => c.type.id === 6)[0];
+        a.href = contact?.value || "#";
     });
 
     let email = document.querySelectorAll('.email');
     email.forEach(a => {
-        a.textContent = data.contacts.filter(c => c.type.id == 10)[0].value;
-        a.href = `mailto:${data.contacts.filter(c => c.type.id == 10)[0].value}`;
+        const contact = data.contacts.filter(c => c.type.id === 10)[0];
+        if (contact && contact.value) {
+            a.textContent = contact.value;
+            a.href = `mailto:${contact.value}`;
+        } else {
+            a.textContent = "Email not available";
+        }
     });
 }

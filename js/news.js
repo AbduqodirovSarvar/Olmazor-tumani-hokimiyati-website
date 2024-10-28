@@ -7,34 +7,37 @@ export function renderNewsSection(Data) {
         return;
     }
 
-    let news = Data.posts.filter(post => post.category.id === 6);
+    // Filter posts that have a category and match the category ID
+    let news = Data.posts.filter(post => post.category && post.category.id === 6);
 
     let currentLanguage = getCurrentLanguage();
-
     const newsSection = document.getElementById("blog-section");
 
-    let button = document.createElement("div");
-    button.className = "text-center";
-    button.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${news[0].category.id}" class="btn btn-primary mr-2 mb-2" data-i18n="button.learn_more">Learn More</a></p>`);
-    newsSection.appendChild(button);
+    if (news.length > 0) {
+        let button = document.createElement("div");
+        button.className = "text-center";
+        button.insertAdjacentHTML("beforeend", `<p><a href="single.html?PostCategoryId=${news[0].category.id}" class="btn btn-primary mr-2 mb-2" data-i18n="button.learn_more">Learn More</a></p>`);
+        newsSection.appendChild(button);
+    }
 
     let row = document.getElementById("blog-section-news");
 
     for (let index = 0; index < news.length; index++) {
         if (index === 6) {
-            break; // exit the loop when the index is 3
+            break; // exit the loop when the index is 6
         }
 
         const element = news[index];
 
         // Process description and name to replace \n with <br>
-        let shortDescription = element["description" + currentLanguage];
+        let shortDescription = element["description" + currentLanguage] || "";
         shortDescription = shortDescription.length > 100 
             ? shortDescription.substring(0, 100) + "..."
             : shortDescription;
         shortDescription = shortDescription.replace(/\n/g, '<br>').replace(/\\"/g, '"');
 
-        let name = element["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"');
+        let name = element["name" + currentLanguage] || "No Title";
+        name = name.replace(/\n/g, '<br>').replace(/\\"/g, '"');
 
         let createdAtDate = new Date(element.createdAt);
         let formattedDate = createdAtDate.toLocaleDateString("en-GB", {
