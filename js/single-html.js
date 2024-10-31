@@ -56,6 +56,11 @@ function renderEmployees(Data, categoryId, page = 1) {
         return;
     }
 
+    if(employees.length < 2){
+        renderEmployee(Data, employees[0]);
+        return;
+    }
+
     const currentLanguage = getCurrentLanguage();
     const container = document.getElementById("single-html-container");
 
@@ -212,6 +217,11 @@ function renderPosts(Data, categoryId, page = 1) {
 
     if (currentPosts.length < 1) {
         console.error(`No posts found for category ID ${categoryId} on page ${page}.`);
+        return;
+    }
+
+    if(posts.length < 2){
+        renderPost(Data, posts[0]);
         return;
     }
 
