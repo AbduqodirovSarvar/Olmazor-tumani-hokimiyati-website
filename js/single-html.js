@@ -57,7 +57,7 @@ function renderEmployees(Data, categoryId, page = 1) {
     }
 
     if(employees.length < 2){
-        renderEmployee(Data, employees[0]);
+        renderEmployee(Data, employees[0].id);
         return;
     }
 
@@ -221,7 +221,7 @@ function renderPosts(Data, categoryId, page = 1) {
     }
 
     if(posts.length < 2){
-        renderPost(Data, posts[0]);
+        renderPost(Data, posts[0].id);
         return;
     }
 
