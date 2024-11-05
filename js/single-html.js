@@ -251,7 +251,7 @@ function renderPosts(Data, categoryId, page = 1) {
                             <img src="${baseFileUrl}/${post.photo}" alt="Image" class="img-fluid">
                         </div>
                         <div class="p-3">
-                            <h3 class="text-primary">${post["name" + currentLanguage]}</h3>
+                            <h3 class="text-primary">${post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h3>
                             <p class="mb-0">${formattedDate}</p>
                         </div>
                     </a>
@@ -301,8 +301,8 @@ function renderPost(Data, postId) {
                     <img src="${baseFileUrl}/${post.photo}" alt="Image" class="img-fluid">
                 </div>
                 <div class="p-3">
-                    <h2 class="text-primary">${post["name" + currentLanguage]}</h2>
-                    <p>${post["description" + currentLanguage]}</p>
+                    <h2 class="text-primary">${post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h2>
+                    <p>${post["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
                     <p class="mb-4">${formattedDate}</p>
                 </div>
             </div>
@@ -334,6 +334,7 @@ function renderSectors(Data) {
     container.appendChild(h2);
 
     sectors.forEach(p => {
+        console.log("PPPPP", p.Photo);
         let firstName, lastName;
         switch (currentLanguage) {
             case "Ru":
@@ -347,13 +348,17 @@ function renderSectors(Data) {
                 break;
         }
 
+        // Ensure proper line break replacement
         let htmlContent = `
             <div class="row mb-12">
                 <div class="col-md-12">
-                    <h3 class="text-primary">${p["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</h3>
-                    <h5><strong>Rahbari: </strong>${firstName} ${lastName}</h5>
-                    <p><strong>Address: </strong> ${p.location["name" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p>${p["description" + currentLanguage].replace(/\\n/g, '<br>').replace(/\\"/g, '"')}</p>
+                <div class="img-wrap">
+                            <img src="${baseFileUrl}/${p.photo}" alt="Image" class="img-fluid">
+                        </div>
+                    <h3 class="text-primary">${p["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h3>
+                    <h5><strong data-i18n="single_page.leader">Rahbari: </strong>${firstName} ${lastName}</h5>
+                    <p><strong data-i18n="single_page.address">Address: </strong> ${p.location["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
+                    <p>${p["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
                 </div>
             </div>
             <hr>
@@ -361,6 +366,7 @@ function renderSectors(Data) {
         container.insertAdjacentHTML('beforeend', htmlContent);
     });
 }
+
 
 function renderHistory(Data){
     let about = Data.about; 
