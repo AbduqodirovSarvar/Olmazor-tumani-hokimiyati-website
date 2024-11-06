@@ -23,6 +23,9 @@ export function renderTeamMembers(Data, categories) {
 
     // Create and append buttons
     categories.forEach((category, index) => {
+        if (category.id === 8) {
+          return;
+        }
         const button = document.createElement("button");
         button.className = "btn btn-primary";
         if (index === 0) {
