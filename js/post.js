@@ -11,7 +11,7 @@ export function renderPostSection(Data, categories) {
     let postSection = document.getElementById("posts");
 
     const currentLanguage = getCurrentLanguage();
-    const categoryIds = [2, 4, 6, 7, 9, 10, 11, 12, 13];
+    const categoryIds = [6, 7, 9, 10, 11, 12];
     categories = categories.filter(category => categoryIds.includes(category.id));
     
     const filtersDiv = document.getElementById("filters");

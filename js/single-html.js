@@ -117,7 +117,7 @@ function renderEmployees(Data, categoryId, page = 1) {
                     <h4>${employee["position" + currentLanguage]}</h4>
                     <h4 class="text-primary">${firstName} ${lastName}</h4>
                     <p><strong data-i18n="single_page.work_place"></strong> ${employee["workPlace" + currentLanguage]}</p>
-                    <p><strong data-i18n="single_page.phone_number"></strong> ${employee.phone1 ?? employee.phone2}</p>
+                    <p><strong data-i18n="single_page.phone_number">Phone: </strong> ${employee.phone1 ?? employee.phone2}</p>
                     <p><strong data-i18n="single_page.nationality">Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
                     <p><strong data-i18n="single_page.birthday_place">Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
                     <p><strong data-i18n="single_page.receptions">Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
