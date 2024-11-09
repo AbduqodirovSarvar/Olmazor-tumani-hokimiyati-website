@@ -117,7 +117,6 @@ function renderEmployees(Data, categoryId, page = 1) {
                     <h4>${employee["position" + currentLanguage]}</h4>
                     <h4 class="text-primary">${firstName} ${lastName}</h4>
                     <p><strong data-i18n="single_page.work_place"></strong> ${employee["workPlace" + currentLanguage]}</p>
-                    <p><strong data-i18n="single_page.phone_number">Phone: </strong> ${employee.phone1 ?? employee.phone2}</p>
                     <p><strong data-i18n="single_page.nationality">Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
                     <p><strong data-i18n="single_page.birthday_place">Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
                     <p><strong data-i18n="single_page.receptions">Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
@@ -195,7 +194,6 @@ function renderEmployee(Data, employeeId) {
                     <h4><strong data-i18n="single_page.position">Position : </strong>${employee["position" + currentLanguage]}</h4>
                     <h4 class="text-primary">${firstName} ${lastName}</h4>
                     <p><strong data-i18n="single_page.work_place">Ish joyi : </strong> ${employee["workPlace" + currentLanguage]}</p>
-                    <p><strong data-i18n="single_page.phone_number">Телефон :</strong> ${employee.phone1 ?? employee.phone2} ${employee.phone1 ?? employee.phone1}</p>
                     <p><strong data-i18n="single_page.nationality">Millati:</strong> ${employee["nationality" + currentLanguage]}</p>
                     <p><strong data-i18n="single_page.birthday_place">Tug'ilgan joyi va sanasi :</strong> ${employee["birthPlace" + currentLanguage]}, ${formattedDate}</p>
                     <p><strong data-i18n="single_page.receptions">Фуқароларни қабул қилиш: </strong> ${employee["receptionTime" + currentLanguage]}</p>
@@ -313,9 +311,9 @@ function renderPost(Data, postId) {
 }
 
 function renderSectors(Data) {
-    let sectors = Data.sectors;
+    const sectors = Data.sectors;
 
-    if (sectors.length === 0) {
+    if (!sectors || sectors.length === 0) {
         console.error("No sectors found.");
         return;
     }
@@ -328,44 +326,67 @@ function renderSectors(Data) {
         return;
     }
 
+    // Clear previous content if any
+    container.innerHTML = "";
+
+    // Add a title to the container
     const h2 = document.createElement("h2");
     h2.classList.add("mt-4", "mb-5");
     h2.textContent = "Sectors";
     container.appendChild(h2);
 
-    sectors.forEach(p => {
-        console.log("PPPPP", p.Photo);
-        let firstName, lastName;
+    // Iterate through each sector and render its content
+    sectors.forEach(sector => {
+        // Extract sector and employee details based on the current language
+        const { employee, photo, location } = sector;
+        let firstName, lastName, nationality, workplace, employeePhoto;
+
         switch (currentLanguage) {
             case "Ru":
             case "UzRu":
-                firstName = p.employee.firstnameRu;
-                lastName = p.employee.lastnameRu;
+                firstName = employee.firstnameRu;
+                lastName = employee.lastnameRu;
                 break;
             default:
-                firstName = p.employee.firstnameEn;
-                lastName = p.employee.lastnameEn;
+                firstName = employee.firstnameEn;
+                lastName = employee.lastnameEn;
                 break;
         }
 
-        // Ensure proper line break replacement
-        let htmlContent = `
+        employeePhoto = employee.photo ? `${baseFileUrl}/${employee.photo}` : "default-employee.png";
+
+        const htmlContent = `
             <div class="row mb-12">
-                <div class="col-md-12">
-                <div class="img-wrap">
-                            <img src="${baseFileUrl}/${p.photo}" alt="Image" class="img-fluid">
-                        </div>
-                    <h3 class="text-primary">${p["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h3>
-                    <h5><strong data-i18n="single_page.leader">Rahbari: </strong>${firstName} ${lastName}</h5>
-                    <p><strong data-i18n="single_page.address">Address: </strong> ${p.location["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
-                    <p>${p["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
+                <div class="col-md-6">
+                    <div class="employee-info">
+                        <img src="${employeePhoto}" alt="Employee Image" class="img-fluid mb-3 employee-img">
+                        <h5>
+                            <strong data-i18n="single_page.leader">Leader: </strong>${firstName} ${lastName}
+                        </h5>
+                        <h4><strong data-i18n="single_page.position">Position : </strong>${employee["position" + currentLanguage]}</h4>
+                        <p><strong data-i18n="single_page.nationality">Nationality: </strong>${employee["nationality" + currentLanguage] || "N/A"}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="img-wrap">
+                        <img src="${baseFileUrl}/${photo}" alt="Sector Image" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <h3 class="text-primary">${sector["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h3>
+                    <p><strong data-i18n="single_page.address">Address: </strong>${location["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
+                    <p>${sector["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
                 </div>
             </div>
-            <hr>
+            <hr style="height: 2px; background-color: black; border: none; margin: 20px 0;">
+
         `;
+        
         container.insertAdjacentHTML('beforeend', htmlContent);
     });
 }
+
+
 
 
 function renderHistory(Data){
