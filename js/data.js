@@ -1,4 +1,4 @@
-export const baseApiUrl = 'https://olmazor.api.olmatech.uz/api';
+export const baseApiUrl = 'https://api.olmazor.uz/api';
 export const baseFileUrl = `${baseApiUrl}/File`
 export let Data;
 export let EmployeeCategory;
