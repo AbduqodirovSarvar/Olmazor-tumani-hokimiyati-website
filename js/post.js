@@ -42,14 +42,20 @@ export function renderPostSection(Data, categories) {
 
         let name = post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
 
+        const mediaHTML = isVideoFile(post.photo)
+            ? `<video class="img-fluid post-video" controls>
+                  <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
+                  Your browser does not support the video tag.
+               </video>`
+            : `<img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">`;
+
         const postHTML = `
         <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 category-${post.category.id}">
-            <a href="${baseFileUrl}/${post.photo}" class="item-wrap fancybox mb-2" data-fancybox="gallery2">
-              <span class="icon-search2"></span>
-              <img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">
+            <a href="${baseFileUrl}/${post.photo}" class="item-wrap mb-2" data-fancybox="gallery1">
+              ${mediaHTML}
             </a>
-            <h3>${name}</h3> <!-- Updated to use name with <br> -->
-            <p>${shortDescription}</p> <!-- Updated to use description with <br> -->
+            <h3>${name}</h3>
+            <p>${shortDescription}</p>
             <p><a href="single.html?PostId=${post.id}" data-i18n="button.read_more">Learn More</a></p>
         </div>
         `;
@@ -77,4 +83,9 @@ function filterPosts(categoryId) {
         }
         posts[index].style.display = "block";
     }    
+}
+
+function isVideoFile(fileName) {
+    const videoExtensions = ['.mp4', '.webm', '.ogg'];
+    return videoExtensions.some(ext => fileName.toLowerCase().endsWith(ext));
 }

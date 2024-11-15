@@ -241,12 +241,20 @@ function renderPosts(Data, categoryId, page = 1) {
             year: 'numeric'
         });
 
+        const mediaHTML = isVideoFile(post.photo)
+            ? `<video class="img-fluid post-video" controls>
+                  <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
+                  Your browser does not support the video tag.
+               </video>`
+            : `<img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">`;
+
+
         const postHTML = `
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="service-2 h-100">
                     <a href="single.html?PostId=${post.id}" class="d-block">
                         <div class="img-wrap">
-                            <img src="${baseFileUrl}/${post.photo}" alt="Image" class="img-fluid">
+                        ${mediaHTML}
                         </div>
                         <div class="p-3">
                             <h3 class="text-primary">${post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h3>
@@ -291,12 +299,19 @@ function renderPost(Data, postId) {
         year: 'numeric'
     });
 
+    const mediaHTML = isVideoFile(post.photo)
+            ? `<video class="img-fluid post-video" controls>
+                  <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
+                  Your browser does not support the video tag.
+               </video>`
+            : `<img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">`;
+
     // Render the post content
     const postHTML = `
         <div class="col-md-12 mb-4">
             <div class="service-2 h-100">
                 <div class="img-wrap">
-                    <img src="${baseFileUrl}/${post.photo}" alt="Image" class="img-fluid">
+                    ${mediaHTML}
                 </div>
                 <div class="p-3">
                     <h2 class="text-primary">${post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h2>
@@ -473,4 +488,9 @@ function renderPagination(container, totalPages, currentPage, onPageChange) {
 
     paginationWrapper.appendChild(pagination);
     container.appendChild(paginationWrapper);
+}
+
+function isVideoFile(fileName) {
+    const videoExtensions = ['.mp4', '.webm', '.ogg'];
+    return videoExtensions.some(ext => fileName.toLowerCase().endsWith(ext));
 }
