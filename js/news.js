@@ -54,7 +54,7 @@ export function renderNewsSection(Data) {
                 <a href="single.html?PostId=${element.id}">
                     <img src="${baseFileUrl}/${element.photo}" alt="Image" class="img-fluid post-img">
                 </a>
-                <h2 class="font-size-regular"><a href="#">${name}</a></h2>
+                <h2 class="font-size-regular"><a href="single.html?PostId=${element.id}">${name}</a></h2>
                 <div class="meta mb-4">Olmazor tumani axborot xizmati <span class="mx-2">&bullet;</span>${formattedDate}<span class="mx-2">&bullet;</span></div>
                 <p>${shortDescription}</p>
                 <p><a href="single.html?PostId=${element.id}" data-i18n="button.read_more">Continue Reading...</a></p>

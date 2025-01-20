@@ -61,14 +61,6 @@ export function renderTeamMembers(Data, categories) {
             <div class="col-md-6 col-lg-3 mb-4 category-${employee.category.id}" data-aos="fade-up" data-aos-delay="${index * 100}">
               <div class="team-member ">
                 <figure>
-                  <ul class="social">
-                    <li><a href="#"><span class="icon-facebook"></span></a></li>
-                    <li><a href="#"><span class="icon-twitter"></span></a></li>
-                    <li><a href="#"><span class="icon-linkedin"></span></a></li>
-                    <li><a href="#"><span class="icon-instagram"></span></a></li>
-                    <li><a href="#"><span class="icon-telegram"></span></a></li>
-                    <li><a href="mailto:${employee.email}"><span class="icon-mail_outline"></span></a></li>
-                  </ul>
                   <img src="${baseFileUrl}/${employee.photo}" alt="${employee.firstnameEn} ${employee.lastnameEn}" class="img-fluid employee-img">
                 </figure>
                 <h3>${firstName} ${lastName}</h3>

@@ -40,5 +40,5 @@ export function useTranslate(translations){
 }
 
 export function getCurrentLanguage(){
-    return localStorage.getItem('current-language-key') || 'Ru';
+    return localStorage.getItem('current-language-key') || 'Uz';
 }
