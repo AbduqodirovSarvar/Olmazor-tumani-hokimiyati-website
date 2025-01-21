@@ -521,7 +521,7 @@ mark {
 
 .post-img{
     width: 350px;
-    height: 300px;
+    height: auto;
 }
 
 .img-thumbnail {

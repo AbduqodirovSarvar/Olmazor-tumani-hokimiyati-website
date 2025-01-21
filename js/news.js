@@ -48,11 +48,19 @@ export function renderNewsSection(Data) {
             minute: '2-digit'
         });
 
+        const mediaHTML = isVideoFile(element.photo)
+                    ? `<video class="img-fluid post-video" controls>
+                          <source src="${baseFileUrl}/${element.photo}" type="video/mp4">
+                          Your browser does not support the video tag.
+                       </video>`
+                    : `<img class="img-fluid post-img" src="${baseFileUrl}/${element.photo}">`;
+
         let newHTML = `
         <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">
             <div class="h-entry">
                 <a href="single.html?PostId=${element.id}">
-                    <img src="${baseFileUrl}/${element.photo}" alt="Image" class="img-fluid post-img">
+                ${mediaHTML}
+                    
                 </a>
                 <h2 class="font-size-regular"><a href="single.html?PostId=${element.id}">${name}</a></h2>
                 <div class="meta mb-4">Olmazor tumani axborot xizmati <span class="mx-2">&bullet;</span>${formattedDate}<span class="mx-2">&bullet;</span></div>
@@ -64,4 +72,9 @@ export function renderNewsSection(Data) {
 
         row.insertAdjacentHTML("beforeend", newHTML);
     }
+}
+
+function isVideoFile(fileName) {
+    const videoExtensions = ['.mp4', '.webm', '.ogg'];
+    return videoExtensions.some(ext => fileName.toLowerCase().endsWith(ext));
 }
