@@ -232,6 +232,13 @@ function renderPosts(Data, categoryId, page = 1) {
     }
 
     container.innerHTML = '';
+    container.className = 'mt-5 ml-3';
+    const h2 = document.createElement("h2");
+    h2.className = 'd-flex justify-content-center m-3 fw-bolder';
+    h2.textContent = "Posts";
+    container.appendChild(h2);
+    var container1 = document.createElement('div');
+    container1.className = 'd-flex flex-wrap ';
 
     currentPosts.forEach(post => {
         let createdAtDate = new Date(post.createdAt);
@@ -264,8 +271,9 @@ function renderPosts(Data, categoryId, page = 1) {
                 </div>
             </div>
         `;
-        container.insertAdjacentHTML('beforeend', postHTML);
+        container1.insertAdjacentHTML('beforeend', postHTML);
     });
+    container.appendChild(container1);
 
     renderPagination(container, totalPages, page, (newPage) => {
         renderPosts(Data, categoryId, newPage);
@@ -274,7 +282,6 @@ function renderPosts(Data, categoryId, page = 1) {
 
 function renderPost(Data, postId) {
     const post = Data.posts.find(e => e.id === postId);
-    console.log(post);
 
     if (!post) {
         console.error(`No post found with ID ${postId}.`);
@@ -290,6 +297,7 @@ function renderPost(Data, postId) {
     }
 
     container.innerHTML = ''; // Clear existing content
+    container.className ='';
 
     // Format post date
     let createdAtDate = new Date(post.createdAt);
@@ -300,20 +308,22 @@ function renderPost(Data, postId) {
     });
 
     const mediaHTML = isVideoFile(post.photo)
-            ? `<video class="img-fluid post-video" controls>
+            ? `<video class="img-fluid post-video m-1" controls>
                   <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
                   Your browser does not support the video tag.
                </video>`
-            : `<img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">`;
+            : `<img class="img-fluid post-img m-1" src="${baseFileUrl}/${post.photo}">`;
 
     // Render the post content
     const postHTML = `
         <div class="col-md-12 mb-4">
             <div class="service-2 h-100">
-                <div class="img-wrap">
+                <div class="justify-content-center m-5">
+                    ${mediaHTML}
+                    ${mediaHTML}
                     ${mediaHTML}
                 </div>
-                <div class="p-3">
+                <div class="m-5">
                     <h2 class="text-primary">${post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h2>
                     <p>${post["description" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</p>
                     <p class="mb-4">${formattedDate}</p>
