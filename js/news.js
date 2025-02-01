@@ -48,12 +48,25 @@ export function renderNewsSection(Data) {
             minute: '2-digit'
         });
 
-        const mediaHTML = isVideoFile(element.photo)
-                    ? `<video class="img-fluid post-video" controls>
-                          <source src="${baseFileUrl}/${element.photo}" type="video/mp4">
-                          Your browser does not support the video tag.
-                       </video>`
-                    : `<img class="img-fluid post-img" src="${baseFileUrl}/${element.photo}">`;
+        let mediaHTML = '';
+                
+            if (element.images && element.images.length > 0) {
+                mediaHTML = isVideoFile(element.images[0].name)
+                ? `<video class="img-fluid post-video" controls>
+                    <source src="${baseFileUrl}/${element.images[0].name}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>`
+                : `<img class="img-fluid post-img" src="${baseFileUrl}/${element.images[0].name}">`;
+            } else if (element.photo) {
+                mediaHTML = isVideoFile(element.photo)
+                ? `<video class="img-fluid post-video" controls>
+                    <source src="${baseFileUrl}/${element.photo}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>`
+                : `<img class="img-fluid post-img" src="${baseFileUrl}/${element.photo}">`;
+            } else {
+                mediaHTML = `<div class="col-12 text-center">No media available.</div>`;
+            }
 
         let newHTML = `
         <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">

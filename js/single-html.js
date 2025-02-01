@@ -307,21 +307,62 @@ function renderPost(Data, postId) {
         year: 'numeric'
     });
 
-    const mediaHTML = isVideoFile(post.photo)
-            ? `<video class="img-fluid post-video m-1" controls>
-                  <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
-                  Your browser does not support the video tag.
-               </video>`
-            : `<img class="img-fluid post-img m-1" src="${baseFileUrl}/${post.photo}">`;
+    // const mediaHTML = isVideoFile(post.photo)
+    //         ? `<video class="img-fluid post-video" controls>
+    //               <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
+    //               Your browser does not support the video tag.
+    //            </video>`
+    //         : `<img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">`;
+
+    let mediaHTML = '';
+
+if (post.images && post.images.length > 0) {
+    // If post.images exists and has items, generate HTML for each media file
+    mediaHTML = post.images.map(media => {
+        if (isVideoFile(media.name)) {
+            return `
+                <div class="col-4 m-0">
+                    <video class="img-fluid post-video" controls>
+                        <source src="${baseFileUrl}/${media.name}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            `;
+        } else {
+            return `
+                <div class="col-4 m-0">
+                    <img class="img-fluid post-img" src="${baseFileUrl}/${media.name}" alt="Post Image">
+                </div>
+            `;
+        }
+    }).join(''); // Join all media HTML into a single string
+} else if (post.photo) {
+    // If post.images is empty or doesn't exist, fall back to post.photo
+    mediaHTML = isVideoFile(post.photo)
+        ? `
+            <div class="col-4 m-0">
+                <video class="img-fluid post-video" controls>
+                    <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        `
+        : `
+            <div class="col-4 m-0">
+                <img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}" alt="Post Image">
+            </div>
+        `;
+} else {
+    // If neither post.images nor post.photo exists, display a placeholder or error message
+    mediaHTML = `<div class="col-12 text-center">No media available.</div>`;
+}
 
     // Render the post content
     const postHTML = `
         <div class="col-md-12 mb-4">
             <div class="service-2 h-100">
-                <div class="justify-content-center m-5">
-                    ${mediaHTML}
-                    ${mediaHTML}
-                    ${mediaHTML}
+                <div class="row justify-content-center m-5">
+                ${mediaHTML}
                 </div>
                 <div class="m-5">
                     <h2 class="text-primary">${post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"')}</h2>

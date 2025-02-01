@@ -42,12 +42,32 @@ export function renderPostSection(Data, categories) {
 
         let name = post["name" + currentLanguage].replace(/\n/g, '<br>').replace(/\\"/g, '"'); // Replace new lines with <br>
 
-        const mediaHTML = isVideoFile(post.photo)
+        // const mediaHTML = isVideoFile(post.photo)
+        //     ? `<video class="img-fluid post-video" controls>
+        //           <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
+        //           Your browser does not support the video tag.
+        //        </video>`
+        //     : `<img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">`;
+
+        let mediaHTML = '';
+        
+        if (post.images && post.images.length > 0) {
+            mediaHTML = isVideoFile(post.images[0].name)
+            ? `<video class="img-fluid post-video" controls>
+                  <source src="${baseFileUrl}/${post.images[0].name}" type="video/mp4">
+                  Your browser does not support the video tag.
+               </video>`
+            : `<img class="img-fluid post-img" src="${baseFileUrl}/${post.images[0].name}">`;
+        } else if (post.photo) {
+            mediaHTML = isVideoFile(post.photo)
             ? `<video class="img-fluid post-video" controls>
                   <source src="${baseFileUrl}/${post.photo}" type="video/mp4">
                   Your browser does not support the video tag.
                </video>`
             : `<img class="img-fluid post-img" src="${baseFileUrl}/${post.photo}">`;
+        } else {
+            mediaHTML = `<div class="col-12 text-center">No media available.</div>`;
+        }
 
         const postHTML = `
         <div class="item web col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-5 category-${post.category.id}">
